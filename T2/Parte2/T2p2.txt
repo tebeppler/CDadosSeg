@@ -1,0 +1,8 @@
+Seção: .text é executável: rx
+Seção: .rdata [não] é executável: r
+Seção: .data [não] é executável: rw
+Seção: .pdata [não] é executável: r
+Seção: .00cfg [não] é executável: r
+Seção: .tls [não] é executável: rw
+Seção: .rsrc [não] é executável: r
+Seção: .reloc [não] é executável: r

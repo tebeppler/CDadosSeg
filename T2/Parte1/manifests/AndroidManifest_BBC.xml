@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package="bbc.mobile.weather" platformBuildVersionCode="26" platformBuildVersionName="8.0.0">
+    <supports-screens android:largeScreens="true" android:normalScreens="true" android:smallScreens="true" android:xlargeScreens="true"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.NFC"/>
+    <uses-feature android:name="android.hardware.location" android:required="true"/>
+    <uses-feature android:name="android.hardware.location.network" android:required="false"/>
+    <uses-feature android:name="android.hardware.location.gps" android:required="false"/>
+    <uses-feature android:name="android.hardware.NFC" android:required="false"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <application android:allowBackup="true" android:icon="@drawable/ic_launcher" android:label="@string/app_name" android:launchMode="singleInstance" android:name="bbc.mobile.weather.App" android:resizeableActivity="false" android:roundIcon="@drawable/ic_launcher_round" android:theme="@style/AppTheme">
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>
+        <activity android:name="net.hockeyapp.android.UpdateActivity"/>
+        <activity android:label="@string/app_name" android:launchMode="singleTask" android:name="bbc.mobile.weather.ui.MainActivity" android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:host="www.bbc.co.uk" android:pathPrefix="/weather/0" android:scheme="http"/>
+                <data android:host="www.bbc.co.uk" android:pathPrefix="/weather/1" android:scheme="http"/>
+                <data android:host="www.bbc.co.uk" android:pathPrefix="/weather/2" android:scheme="http"/>
+                <data android:host="www.bbc.co.uk" android:pathPrefix="/weather/3" android:scheme="http"/>
+                <data android:host="www.bbc.co.uk" android:pathPrefix="/weather/4" android:scheme="http"/>
+                <data android:host="www.bbc.co.uk" android:pathPrefix="/weather/5" android:scheme="http"/>
+                <data android:host="www.bbc.co.uk" android:pathPrefix="/weather/6" android:scheme="http"/>
+                <data android:host="www.bbc.co.uk" android:pathPrefix="/weather/7" android:scheme="http"/>
+                <data android:host="www.bbc.co.uk" android:pathPrefix="/weather/8" android:scheme="http"/>
+                <data android:host="www.bbc.co.uk" android:pathPrefix="/weather/9" android:scheme="http"/>
+                <data android:host="www.bbc.co.uk" android:pathPrefix="/weather/A" android:scheme="http"/>
+                <data android:host="www.bbc.co.uk" android:pathPrefix="/weather/B" android:scheme="http"/>
+                <data android:host="www.bbc.co.uk" android:pathPrefix="/weather/C" android:scheme="http"/>
+                <data android:host="www.bbc.co.uk" android:pathPrefix="/weather/D" android:scheme="http"/>
+                <data android:host="www.bbc.co.uk" android:pathPrefix="/weather/E" android:scheme="http"/>
+                <data android:host="www.bbc.co.uk" android:pathPrefix="/weather/F" android:scheme="http"/>
+                <data android:host="www.bbc.co.uk" android:pathPrefix="/weather/G" android:scheme="http"/>
+                <data android:host="www.bbc.co.uk" android:pathPrefix="/weather/H" android:scheme="http"/>
+                <data android:host="www.bbc.co.uk" android:pathPrefix="/weather/I" android:scheme="http"/>
+                <data android:host="www.bbc.co.uk" android:pathPrefix="/weather/J" android:scheme="http"/>
+                <data android:host="www.bbc.co.uk" android:pathPrefix="/weather/K" android:scheme="http"/>
+                <data android:host="www.bbc.co.uk" android:pathPrefix="/weather/L" android:scheme="http"/>
+                <data android:host="www.bbc.co.uk" android:pathPrefix="/weather/M" android:scheme="http"/>
+                <data android:host="www.bbc.co.uk" android:pathPrefix="/weather/N" android:scheme="http"/>
+                <data android:host="www.bbc.co.uk" android:pathPrefix="/weather/O" android:scheme="http"/>
+                <data android:host="www.bbc.co.uk" android:pathPrefix="/weather/P" android:scheme="http"/>
+                <data android:host="www.bbc.co.uk" android:pathPrefix="/weather/R" android:scheme="http"/>
+                <data android:host="www.bbc.co.uk" android:pathPrefix="/weather/S" android:scheme="http"/>
+                <data android:host="www.bbc.co.uk" android:pathPrefix="/weather/T" android:scheme="http"/>
+                <data android:host="www.bbc.co.uk" android:pathPrefix="/weather/U" android:scheme="http"/>
+                <data android:host="www.bbc.co.uk" android:pathPrefix="/weather/W" android:scheme="http"/>
+                <data android:host="www.bbc.co.uk" android:pathPrefix="/weather/Y" android:scheme="http"/>
+                <data android:host="www.bbc.co.uk" android:pathPrefix="/weather/Z" android:scheme="http"/>
+                <data android:host="www.bbc.co.uk" android:pathPrefix="/weather/home" android:scheme="http"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:mimeType="application/vnd.bbc.mobile.weather"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="bbc.mobile.weather.ui.CreditsActivity" android:parentActivityName="bbc.mobile.weather.ui.MainActivity" android:theme="@style/AppTheme.Credits">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="bbc.mobile.weather.ui.MainActivity"/>
+        </activity>
+        <activity android:name="bbc.mobile.weather.ui.DebugActivity" android:parentActivityName="bbc.mobile.weather.ui.MainActivity" android:theme="@style/AppTheme.Debug">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="bbc.mobile.weather.ui.MainActivity"/>
+        </activity>
+        <activity android:name="bbc.mobile.weather.ui.SearchActivity" android:parentActivityName="bbc.mobile.weather.ui.MainActivity" android:theme="@style/AppTheme.Search">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="bbc.mobile.weather.ui.MainActivity"/>
+        </activity>
+        <activity android:launchMode="singleTask" android:name="bbc.mobile.weather.ui.WarningsActivity" android:parentActivityName="bbc.mobile.weather.ui.MainActivity" android:theme="@style/AppTheme.Warnings">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="bbc.mobile.weather.ui.MainActivity"/>
+        </activity>
+        <activity android:launchMode="singleInstance" android:name="bbc.mobile.weather.ui.UkWarningsActivity" android:parentActivityName="bbc.mobile.weather.ui.MainActivity" android:theme="@style/AppTheme.Warnings">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="bbc.mobile.weather.ui.MainActivity"/>
+        </activity>
+        <activity android:name="bbc.mobile.weather.ui.SettingsActivity" android:parentActivityName="bbc.mobile.weather.ui.MainActivity" android:theme="@style/AppTheme.Settings">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="bbc.mobile.weather.ui.MainActivity"/>
+        </activity>
+        <activity android:name="bbc.mobile.weather.ui.HelpActivity" android:parentActivityName="bbc.mobile.weather.ui.MainActivity" android:theme="@style/AppTheme.Help">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="bbc.mobile.weather.ui.MainActivity"/>
+        </activity>
+        <activity android:name="bbc.mobile.weather.ui.AboutActivity" android:parentActivityName="bbc.mobile.weather.ui.MainActivity" android:theme="@style/AppTheme.Debug">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="bbc.mobile.weather.ui.MainActivity"/>
+        </activity>
+        <activity android:name="bbc.mobile.weather.ui.SignInActivity"/>
+        <service android:exported="true" android:icon="@drawable/ic_launcher" android:label="@string/dream_title" android:name="bbc.mobile.weather.extension.WeatherDreamExtension" android:permission="android.permission.BIND_DREAM_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.dreams.DreamService"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </service>
+        <service android:icon="@drawable/dashclock_icon" android:label="@string/dashclock_title" android:name="bbc.mobile.weather.extension.WeatherDashClockExtension" android:permission="com.google.android.apps.dashclock.permission.READ_EXTENSION_DATA">
+            <intent-filter>
+                <action android:name="com.google.android.apps.dashclock.Extension"/>
+            </intent-filter>
+            <meta-data android:name="protocolVersion" android:value="1"/>
+            <meta-data android:name="description" android:value="@string/dashclock_description"/>
+        </service>
+        <receiver android:exported="true" android:label="@string/a_widget_4x2" android:name="bbc.mobile.weather.Widget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget4x2"/>
+        </receiver>
+        <receiver android:exported="true" android:label="@string/a_widget_4x1" android:name="bbc.mobile.weather.Widget_4x1">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget4x1"/>
+        </receiver>
+        <receiver android:exported="true" android:label="@string/a_widget_2x1" android:name="bbc.mobile.weather.Widget_2x1">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget2x1"/>
+        </receiver>
+        <provider android:authorities="bbc.mobile.weather.fileprovider" android:exported="false" android:grantUriPermissions="true" android:name="android.support.v4.content.FileProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths"/>
+        </provider>
+        <service android:enabled="true" android:exported="false" android:name="bbc.mobile.weather.service.AsyncService"/>
+        <service android:enabled="true" android:exported="false" android:name="bbc.mobile.weather.service.NetworkService"/>
+        <activity android:exported="false" android:name="com.google.android.gms.common.api.GoogleApiActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <provider android:authorities="bbc.mobile.weather.firebaseinitprovider" android:exported="false" android:initOrder="100" android:name="com.google.firebase.provider.FirebaseInitProvider"/>
+        <meta-data android:name="android.support.VERSION" android:value="26.1.0"/>
+        <meta-data android:name="android.arch.lifecycle.VERSION" android:value="27.0.0-SNAPSHOT"/>
+    </application>
+</manifest>

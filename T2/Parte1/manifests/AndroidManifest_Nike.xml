@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:backupInForeground="false" android:compileSdkVersion="29" android:compileSdkVersionCodename="10" android:fullBackupContent="false" package="com.nike.ntc" platformBuildVersionCode="29" platformBuildVersionName="10">
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS"/>
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS"/>
+    <uses-permission android:name="android.permission.READ_SYNC_STATS"/>
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.CAMERA" android:required="false"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:maxSdkVersion="22" android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <permission android:name="com.nike.ntc.BROADCAST_NOTIFICATIONS" android:protectionLevel="signature"/>
+    <uses-permission android:name="com.nike.ntc.BROADCAST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="BIND_GET_INSTALL_REFERRER_SERVICE"/>
+    <uses-feature android:name="android.hardware.camera" android:required="false"/>
+    <uses-feature android:name="android.hardware.sensor.accelerometer" android:required="false"/>
+    <uses-permission android:name="android.permission.USE_CREDENTIALS"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="com.android.vending.BILLING"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.NFC"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+    <uses-feature android:name="android.hardware.camera.front" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera.flash" android:required="false"/>
+    <uses-feature android:name="android.hardware.screen.landscape" android:required="false"/>
+    <uses-feature android:name="android.hardware.wifi" android:required="false"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE"/>
+    <uses-permission android:name="com.android.vending.CHECK_LICENSE"/>
+    <application android:allowBackup="false" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:backupInForeground="false" android:extractNativeLibs="true" android:fullBackupContent="false" android:icon="@mipmap/ic_launcher_futura" android:label="@string/common_app_name" android:largeHeap="true" android:name="com.nike.ntc.NikeTrainingApplication" android:networkSecurityConfig="@xml/network_security_config" android:requestLegacyExternalStorage="true" android:supportsRtl="true" android:theme="@style/ntc_vc_Theme" android:vmSafeMode="false">
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyBFVkSFIyARtkhlDZxtx88n547psucgzXA"/>
+        <meta-data android:name="com.google.android.gms.cast.framework.OPTIONS_PROVIDER_CLASS_NAME" android:value="com.nike.videoplayer.remote.chromecast.VideoPlayerCastOptionsProvider"/>
+        <activity android:name="com.nike.ntc.landing.ProgramDispatchActivity"/>
+        <activity android:name="com.nike.ntc.landing.LandingDispatchActivity" android:theme="@style/ntc_vc_Theme.Free.Transparent"/>
+        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.onboarding.OnboardingSplashActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoActionBar.Launch.Startup">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <meta-data android:name="android.app.shortcuts" android:resource="@xml/shortcuts"/>
+        </activity>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.onboarding.OnboardingVideoActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.OnBoarding"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.onboarding.WelcomeActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.OnBoarding.WelcomeActivity"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.landing.ManifestLoadingActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.ManifestLoading"/>
+        <activity android:label="@string/application_tab_workout_label" android:launchMode="singleTop" android:name="com.nike.ntc.landing.LandingActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Free.Tabbed">
+            <intent-filter>
+                <action android:name="vnd.google.fitness.TRACK"/>
+                <data android:mimeType="vnd.google.fitness.activity/other"/>
+            </intent-filter>
+        </activity>
+        <activity android:exported="false" android:label="@string/common_app_name" android:name="com.nike.ntc.profile.AboutActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Free"/>
+        <activity android:exported="false" android:label="@string/common_app_name" android:name="com.nike.ntc.version.control.KillSwitchActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Free"/>
+        <activity android:exported="false" android:label="@string/common_app_name" android:name="com.nike.ntc.version.control.VersionControlActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Free"/>
+        <activity android:label="@string/nml_browse_label" android:name="com.nike.music.ui.browse.BrowseActivity" android:screenOrientation="portrait" android:theme="@style/MusicApp.NoActionBar"/>
+        <activity android:label="@string/nml_browse_label" android:launchMode="singleTop" android:name="com.nike.music.ui.play.PlayerDetailsActivity" android:noHistory="true" android:screenOrientation="portrait" android:theme="@style/MusicApp.NoActionBar"/>
+        <activity android:label="@string/nml_browse_label" android:name="com.nike.ntc.workout.AnalyticsEnabledBrowseActivity" android:screenOrientation="portrait" android:theme="@style/MusicApp.NoActionBar"/>
+        <activity android:exported="false" android:label="@string/presession_overview_label" android:name="com.nike.ntc.insession.PreSessionActivity" android:parentActivityName="com.nike.ntc.landing.LandingActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.PreSession"/>
+        <activity android:exported="false" android:label="@string/common_app_name" android:name="com.nike.ntc.insession.PostSessionActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Free" android:windowSoftInputMode="stateHidden"/>
+        <activity android:label="@string/workout_history_items_need_action" android:name="com.nike.ntc.history.NeedsActionActivity" android:parentActivityName="com.nike.ntc.history.HistoryActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.History"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.manualentry.ManualEntryActivity" android:parentActivityName="com.nike.ntc.history.HistoryActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Free"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.history.summary.WorkoutSummaryActivity" android:parentActivityName="com.nike.ntc.history.HistoryActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Free" android:windowSoftInputMode="stateHidden"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.history.summary.WorkoutSummaryRpeActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Free" android:windowSoftInputMode="stateHidden"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.postsession.FirstTimeRpeActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Free"/>
+        <activity android:exported="false" android:label="@string/postsession_google_fit_title" android:name="com.nike.ntc.googlefit.GoogleFitActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Dark.Free"/>
+        <activity android:exported="false" android:label="@string/common_app_name" android:name="com.nike.ntc.insession.GetReadyActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.GetReady"/>
+        <activity android:exported="false" android:label="@string/common_app_name" android:name="com.nike.ntc.insession.InSessionActivity" android:theme="@style/AppTheme.InSession"/>
+        <activity android:exported="false" android:label="@string/common_app_name" android:name="com.nike.ntc.insession.InSessionPausedActivity" android:theme="@style/AppTheme.InSession.Paused"/>
+        <activity android:label="@string/workout_library_search_label_hint" android:launchMode="singleTop" android:name="com.nike.ntc.library.WorkoutLibrarySearchActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.Workout.Search">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH"/>
+            </intent-filter>
+            <meta-data android:name="android.app.default_searchable" android:value=".library.WorkoutLibrarySearchActivity"/>
+            <meta-data android:name="android.app.searchable" android:resource="@xml/searchable"/>
+        </activity>
+        <activity android:label="@string/workout_library_favorites" android:name="com.nike.ntc.favorites.FavoritesActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Free"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.library.LibraryActivity" android:parentActivityName="com.nike.ntc.landing.LandingActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoActionBar.Library"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.library.LibraryFilterActivity" android:theme="@style/ntc_vc_Theme.Free.Transparent"/>
+        <activity android:label="@string/application_tab_activity_label" android:name="com.nike.ntc.history.HistoryActivity" android:parentActivityName="com.nike.ntc.landing.LandingActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.History"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.messageoftheday.WhatsNewActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.WhatsNew"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.pais.camera.CameraActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Free"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.pais.gallery.GalleryActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Free"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.postsession.sharing.ShareActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.SharedFeatures.NoActionBar"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.pais.sticker.StickerActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.SharedFeatures.NoActionBar"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.postsession.sharing.SocialShareActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.SharedFeatures.NoActionBar"/>
+        <activity android:label="@string/shared_sharing_platform_selection_nav_title" android:name="com.nike.ntc.achievements.AchievementShareActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.SharedFeatures.NoActionBar"/>
+        <activity android:label="@string/feed_title_text" android:name="com.nike.ntc.feed.FeedActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Free"/>
+        <activity android:label="@string/inbox_title_text" android:name="com.nike.ntc.inbox.InboxActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Free"/>
+        <activity android:label="@string/profile_title" android:name="com.nike.ntc.profile.ProfileActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Free"/>
+        <activity android:label="@string/settings_title" android:name="com.nike.ntc.profile.SettingsActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Free" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name="com.nike.ntc.profile.EditAvatarActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.SharedFeatures.NoActionBar"/>
+        <activity android:name="com.nike.ntc.profile.EditProfileActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Free"/>
+        <activity android:exported="false" android:label="@string/common_app_name" android:name="com.nike.ntc.shared.OffersActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.SharedFeatures.NoActionBar"/>
+        <activity android:exported="false" android:label="@string/common_app_name" android:name="com.nike.ntc.shared.OfferThreadActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.SharedFeatures.DarkActionBar"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.shared.ShoppingLanguageActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.SharedFeatures.NoActionBar"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.feed.ThreadContentActivity" android:parentActivityName="com.nike.ntc.feed.FeedActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.SharedFeatures.NoActionBar"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.shared.ProfileItemDetailActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.SharedFeatures.NoActionBar"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.shared.FriendsListActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.SharedFeatures.NoActionBar" android:windowSoftInputMode="stateHidden"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.shared.CheerListActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.SharedFeatures.NoActionBar"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.shared.CommentListActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Free"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.shared.FollowingActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.SharedFeatures.NoActionBar"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.shared.membercard.MemberCardActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.SharedFeatures.NoActionBar"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.shared.AthleteEventsActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Free"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.shared.AthleteEventsDetailActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.SharedFeatures.NoActionBar"/>
+        <activity android:label="@string/friend_find_title" android:name="com.nike.ntc.shared.FriendSearchActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoActionBar" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name="com.nike.ntc.shared.SharedBlockedUsersSettingsActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.shared.UserThreadActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.SharedFeatures.NoActionBar"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.shared.WebViewActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.SharedFeatures.NoActionBar"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.feed.TaggedUsersListActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.SharedFeatures.NoActionBar"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.postsession.sharing.ComposePostActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.SharedFeatures.NoActionBar"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.postsession.sharing.FeedFriendTaggingActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.SharedFeatures.NoActionBar"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.postsession.sharing.FeedFriendSearchActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Free"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.postsession.sharing.FeedLocationSearchActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.SharedFeatures.NoActionBar"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.postsession.sharing.FeedLocationTaggingActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.SharedFeatures.NoActionBar"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.shared.ErrorStateActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.SharedFeatures.NoActionBar" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name="com.nike.atlasclient.views.utils.AtlasWebViewActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.plan.PlanSetupActivity" android:parentActivityName="com.nike.ntc.landing.LandingActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.Plan.Setup"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.plan.plantransition.PlanTransitionActivity" android:parentActivityName="com.nike.ntc.plan.detail.PlanOverviewActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Free"/>
+        <activity android:label="@string/coach_setup_select_equipment_option_title" android:name="com.nike.ntc.plan.PlanEquipmentSelectActivity" android:parentActivityName="com.nike.ntc.plan.PlanSetupActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.Plan.Setup"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.plan.settings.PlanSettingsActivity" android:parentActivityName="com.nike.ntc.plan.detail.PlanOverviewActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Free"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.plan.detail.PlanOverviewActivity" android:parentActivityName="com.nike.ntc.landing.LandingActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.Plan.Overview"/>
+        <activity android:label="@string/coach_plan_hq_about_recovery" android:name="com.nike.ntc.plan.hq.recovery.PlanHqRecoveryActivity" android:parentActivityName="com.nike.ntc.landing.LandingActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Plan.Recovery"/>
+        <activity android:label="@string/plan_full_schedule_toolbar_title" android:name="com.nike.ntc.plan.hq.full.schedule.PlanFullScheduleActivity" android:parentActivityName="com.nike.ntc.landing.LandingActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Free"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.plan.hq.full.schedule.PlanFullScheduleWeekDescriptionActivity" android:parentActivityName="com.nike.ntc.plan.hq.full.schedule.PlanFullScheduleActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Free"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.plan.hq.recap.PlanWeekRecapActivity" android:parentActivityName="com.nike.ntc.plan.hq.full.schedule.PlanFullScheduleActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Free"/>
+        <activity android:label="@string/coach_hq_edit_schedule_label" android:name="com.nike.ntc.plan.hq.edit.schedule.PlanEditScheduleActivity" android:parentActivityName="com.nike.ntc.landing.LandingActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Free"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.plan.CompletedPlansActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Free"/>
+        <activity android:label="@string/plan_summary_toolbar_title" android:name="com.nike.ntc.plan.summary.detail.CompletedPlanSummaryDetailActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Free"/>
+        <activity android:label="@string/coach_plan_adapter_end_plan" android:name="com.nike.ntc.plan.settings.plan.EndPlanActivity" android:parentActivityName="com.nike.ntc.plan.settings.PlanSettingsActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Free"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.plan.hq.tips.PlanHqTipsActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Free"/>
+        <activity android:label="@string/coach_edit_plan_settings_title" android:name="com.nike.ntc.plan.hq.edit.plan.EditPlanActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Free"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.plan.hq.edit.plan.EditPlanDetailActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Free"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.plan.hq.PlanHqActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Free"/>
+        <activity android:label="@string/workout_settings_title" android:name="com.nike.ntc.presession.WorkoutSettingsActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Free">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.profile.PaymentInformationActivity" android:parentActivityName="com.nike.ntc.profile.SettingsActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Free"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.profile.ShippingInformationActivity" android:parentActivityName="com.nike.ntc.profile.SettingsActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Free"/>
+        <activity android:label="@string/application_tab_personal_shop_label" android:name="com.nike.ntc.ui.PersonalShopActivity" android:parentActivityName="com.nike.ntc.landing.LandingActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Free"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.shared.EditorialThreadActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:exported="false" android:label="@string/common_app_name" android:name="com.nike.ntc.collections.featured.AthletePageActivity" android:parentActivityName="com.nike.ntc.library.AllCollectionsActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.AthletePage"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.collections.featured.AthleteInteractionVideoActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Free.FullScreen"/>
+        <activity android:label="@string/all_workout_collections_collections_tab_title" android:name="com.nike.ntc.collections.collection.CollectionActivity" android:parentActivityName="com.nike.ntc.library.AllCollectionsActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.Collection"/>
+        <activity android:exported="false" android:label="@string/all_workout_collections_title" android:name="com.nike.ntc.library.AllCollectionsActivity" android:parentActivityName="com.nike.ntc.landing.LandingActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.AllCollections"/>
+        <activity android:exported="true" android:label="Security Exception" android:name="com.nike.ntc.SecurityExceptionActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Security">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".profile.AboutActivity"/>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.login.SocialUniteActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Free"/>
+        <activity android:exported="true" android:label="@string/common_app_name" android:name="com.nike.ntc.wxapi.WXEntryActivity"/>
+        <activity android:label="@string/common_app_name" android:name="com.nike.ntc.login.ForcedLoginDispatcherActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Free"/>
+        <activity android:label="" android:name="com.nike.ntc.achievements.AchievementDetailActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.Achievement.Detail"/>
+        <activity android:exported="false" android:label="@string/common_app_name" android:name="com.nike.ntc.login.MobileNumberRequiredActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Free"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize" android:label="@string/common_app_name" android:name="com.gigya.socialize.android.ui.HostActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:allowTaskReparenting="true" android:label="@string/common_app_name" android:launchMode="singleTask" android:name="com.gigya.socialize.android.login.providers.WebLoginActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="gsapi" android:scheme="com.nike.ntc"/>
+            </intent-filter>
+        </activity>
+        <activity android:exported="true" android:label="@string/common_app_name" android:launchMode="singleTask" android:name="com.nike.ntc.deeplink.DeepLinkActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Dark">
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="ntc-go.nike.com" android:scheme="https"/>
+                <data android:host="niketraining.app.link" android:scheme="https"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="ntc"/>
+            </intent-filter>
+            <intent-filter>
+                <data android:scheme="niketrainingclub"/>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="x-callback-url" android:scheme="niketrainingclub"/>
+            </intent-filter>
+        </activity>
+        <meta-data android:name="io.branch.sdk.BranchKey" android:value="@string/branch_key_live"/>
+        <meta-data android:name="io.branch.sdk.TestMode" android:value="false"/>
+        <activity android:exported="true" android:label="@string/common_app_name" android:launchMode="singleTask" android:name="com.nike.ntc.deeplink.SingularDeepLinkActivity" android:screenOrientation="portrait" android:theme="@style/ntc_vc_Theme.Dark">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="niketrainingclub.sng.link" android:scheme="https"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Bluetooth Devices" android:name="com.nike.ntc.premium.BleDeviceListActivity" android:theme="@style/ntcp_Theme.Landing"/>
+        <activity android:label="@string/browse_tips" android:name="com.nike.ntc.premium.BrowseTipsActivity" android:screenOrientation="portrait" android:theme="@style/ntcp_Theme.BrowseTips"/>
+        <activity android:name="com.nike.ntc.premium.CircuitWorkoutInSessionActivity" android:screenOrientation="portrait" android:theme="@style/ntcp_Theme.Circuit.InSession"/>
+        <activity android:name="com.nike.ntc.premium.CircuitWorkoutPreSessionActivity" android:screenOrientation="portrait" android:theme="@style/ntcp_Theme.Circuit"/>
+        <activity android:label="@string/application_tab_workout_label" android:name="com.nike.ntc.premium.DiscoverActivity" android:screenOrientation="portrait" android:theme="@style/ntcp_Theme.Landing.CTA"/>
+        <activity android:configChanges="layoutDirection|orientation|screenSize" android:exported="false" android:name="com.nike.ntc.premium.FullScreenVideoPlayerActivity" android:theme="@style/NtcVidFullScreenPlayer"/>
+        <activity android:configChanges="layoutDirection|orientation|screenSize" android:exported="false" android:name="com.nike.ntc.premium.InSessionFullScreenVideoPlayerActivity" android:theme="@style/NtcVidFullScreenPlayer"/>
+        <activity android:configChanges="layoutDirection|orientation|screenSize" android:exported="false" android:name="com.nike.ntc.premium.LiveStreamVideoActivity" android:theme="@style/ntcp_Theme.Landing"/>
+        <activity android:label="@string/application_tab_paid_label" android:name="com.nike.ntc.premium.MusicBrowserActivity" android:screenOrientation="portrait" android:theme="@style/MusicApp.NoActionBar"/>
+        <activity android:exported="false" android:label="@string/application_tab_paid_label" android:name="com.nike.ntc.premium.ProgramHqActivity" android:screenOrientation="portrait" android:theme="@style/ntcp_PaidTheme.ProgramHQ.CTA"/>
+        <activity android:name="com.nike.ntc.premium.VideoDrillsActivity" android:screenOrientation="portrait" android:theme="@style/ntcp_Theme.Drills"/>
+        <activity android:exported="false" android:label="@string/application_tab_paid_label" android:name="com.nike.ntc.premium.ProgramsBrowseActivity" android:screenOrientation="portrait" android:theme="@style/ntcp_PaidTheme.Browse.Programs.CTA"/>
+        <activity android:exported="false" android:name="com.nike.ntc.premium.BrowseOtherProgramsActivity" android:screenOrientation="portrait" android:theme="@style/ntcp_PaidTheme.Browse.Programs"/>
+        <activity android:label="@string/feed_title" android:launchMode="singleTop" android:name="com.nike.ntc.memberhome.MemberHomeActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.Workout.Search"/>
+        <activity android:launchMode="singleTop" android:name="com.nike.ntc.productmarketing.ProductMarketingViewAllActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.Workout.Search"/>
+        <activity android:label="" android:launchMode="singleTop" android:name="com.nike.ntc.editorialcontent.EditorialContentViewAllActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.Workout.Search"/>
+        <activity android:launchMode="singleTop" android:name="com.nike.ntc.activityugc.ActivityUgcViewAllActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.Workout.Search"/>
+        <service android:exported="false" android:name="com.nike.ntc.premium.WorkoutTrackingService"/>
+        <activity android:name="com.nike.ntc.geo.GeoWorkoutPreSessionActivity" android:screenOrientation="portrait" android:theme="@style/ntcp_Theme.Video"/>
+        <provider android:authorities="com.nike.ntc.MusicProvider" android:exported="false" android:name="com.nike.music.content.MusicProvider">
+            <meta-data android:name="history_size" android:value="1000"/>
+        </provider>
+        <provider android:authorities="com.nike.ntc.provider" android:exported="false" android:name="com.nike.ntc.provider.WorkoutSearchProvider">
+            <path-permission android:pathPrefix="/search_suggest_query" android:readPermission="android.permission.GLOBAL_SEARCH"/>
+        </provider>
+        <provider android:authorities="com.nike.ntc.common" android:exported="false" android:name="com.nike.shared.features.common.data.SharedContentProvider" android:syncable="false"/>
+        <provider android:authorities="com.nike.ntc.common.fileprovider" android:exported="false" android:grantUriPermissions="true" android:name="com.nike.shared.features.common.providers.CommonFileProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_provider_paths"/>
+        </provider>
+        <provider android:authorities="com.nike.ntc.feed" android:exported="false" android:name="com.nike.shared.features.feed.content.FeedProvider" android:syncable="true"/>
+        <provider android:authorities="com.nike.ntc.notifications" android:exported="false" android:name="com.nike.shared.features.notifications.data.NotificationProvider" android:syncable="true"/>
+        <service android:exported="false" android:name="com.nike.ntc.service.WorkoutRecommendationIntentService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:exported="false" android:name="com.nike.ntc.service.FetchAllActivitiesJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:exported="false" android:name="com.nike.ntc.service.PlansSyncService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:exported="false" android:name="com.nike.ntc.service.ThreadsSyncIntentService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:exported="false" android:name="com.nike.ntc.service.PushAllUpdatedActivitiesJobIntentService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:exported="false" android:foregroundServiceType="0x00000002" android:name="com.nike.ntc.workout.engine.WorkoutEngineService"/>
+        <service android:exported="false" android:name="com.nike.ntc.scheduler.uatags.UrbanAirshipJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:exported="false" android:name="com.nike.music.player.PlayerService"/>
+        <service android:exported="false" android:name="com.nike.ntc.paid.workoutlibrary.jobservice.WorkoutLibraryJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:exported="false" android:name="com.nike.ntc.service.AchievementsJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:exported="false" android:name="com.nike.ntc.service.NotificationChannelJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:exported="false" android:name="com.nike.ntc.geo.jobservice.GeoLibraryJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <receiver android:exported="false" android:name="com.nike.ntc.push.receiver.NtcNotificationStrategyBroadcastReceiver"/>
+        <receiver android:enabled="true" android:exported="false" android:name="com.nike.ntc.push.receiver.BootReceiver" android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <activity android:name="com.nike.ntc.paid.programs.onboarding.ProgramOnboardingActivity" android:screenOrientation="portrait" android:theme="@style/ntcp_Theme.ProgramTransition"/>
+        <activity android:name="com.nike.ntc.paid.programs.overview.ProgramOverviewActivity" android:screenOrientation="portrait" android:theme="@style/ntcp_Theme.Overview"/>
+        <activity android:label="@string/ntcp_paid_program_progress_label" android:name="com.nike.ntc.paid.programs.progress.ProgramProgressActivity" android:screenOrientation="portrait" android:theme="@style/ntcp_Theme.ProgramProgress"/>
+        <activity android:label="@string/ntcp_active_program_settings_end_title" android:name="com.nike.ntc.paid.hq.EndProgramActivity" android:screenOrientation="portrait" android:theme="@style/ntcp_PaidTheme.EndProgram"/>
+        <activity android:name="com.nike.ntc.paid.hq.ViewProgramStageActivity" android:screenOrientation="portrait" android:theme="@style/ntcp_PaidTheme.ProgramHQ"/>
+        <activity android:name="com.nike.ntc.paid.programs.session.VideoWorkoutPreSessionActivity" android:screenOrientation="portrait" android:theme="@style/ntcp_Theme.Video"/>
+        <activity android:name="com.nike.videoplayer.remote.chromecast.expanded.WorkoutControlsActivity" android:resizeableActivity="false" android:screenOrientation="portrait" android:supportsPictureInPicture="true" android:theme="@style/NtcVidRemoteControlTheme"/>
+        <service android:name="com.nike.videoplayer.remote.chromecast.service.RemotePlayMonitoringService"/>
+        <activity android:name="com.nike.streamclient.view_all.component.screens.ProductMarketingViewAllActivity"/>
+        <activity android:label="@string/profile_settings_blocked_users" android:name="com.nike.shared.features.profile.settings.InternalSettingsActivity"/>
+        <service android:exported="false" android:name="com.nike.shared.features.notifications.NotificationsIntentService"/>
+        <activity android:launchMode="singleTop" android:name="com.nike.shared.features.connectedproducts.ConnectedProductsActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="x-callback-url" android:pathPrefix="/connected-product" android:scheme="@string/app_deeplink_scheme"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="x-callback-url" android:pathPrefix="/connected-product/scan" android:scheme="@string/app_deeplink_scheme"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="x-callback-url" android:pathPrefix="/connected-product/scan/intro" android:scheme="@string/app_deeplink_scheme"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:host="@string/connected_products_nfc_tag_intent_filter_host" android:pathPattern="@string/connected_products_nfc_tag_intent_filter_pattern" android:scheme="https"/>
+                <data android:host="@string/connected_products_nfc_tag_intent_filter_host" android:pathPattern="@string/connected_products_nfc_tag_intent_filter_pattern" android:scheme="http"/>
+                <data android:host="@string/connected_products_2_nfc_tag_intent_filter_host" android:pathPattern="/tap/.*" android:scheme="https"/>
+                <data android:host="@string/connected_products_2_nfc_tag_intent_filter_host" android:pathPattern="/tap/.*" android:scheme="http"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.nike.shared.features.common.atlas.AtlasPromptActivity" android:screenOrientation="portrait" android:theme="@style/AppThemeNoActionBar"/>
+        <activity android:name="com.nike.personalshop.ui.PdpActivity" android:screenOrientation="portrait" android:theme="@style/ShTheme"/>
+        <activity android:name="com.nike.personalshop.ui.GridwallActivity" android:screenOrientation="portrait" android:theme="@style/ShTheme"/>
+        <activity android:name="com.nike.personalshop.ui.PdpDetailActivity" android:screenOrientation="portrait" android:theme="@style/ShTheme"/>
+        <activity android:label="@string/disco_gridwall_my_bag_screen_title" android:name="com.nike.personalshop.ui.BagActivity" android:screenOrientation="portrait" android:theme="@style/ShTheme"/>
+        <activity android:label="@string/disco_gridwall_sort_filter_screen_title" android:name="com.nike.personalshop.ui.SortFilterActivity" android:theme="@style/ShThemeTransparent"/>
+        <activity android:exported="false" android:name="com.nike.commerce.ui.alipay.AlipayWebViewActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.nike.productdiscovery.ui.mediacarousel.MediaCarouselFullScreenActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:configChanges="layoutDirection|orientation|screenSize" android:name="com.nike.productdiscovery.ui.ProductDetailsCommonActivity" android:theme="@style/Theme.AppCompat.Light"/>
+        <activity android:name="com.nike.store.component.internal.picker.SelectStoreGtinActivity" android:screenOrientation="portrait" android:theme="@style/StoreComponentTheme.NoActionBar"/>
+        <activity android:name="com.nike.store.component.internal.locator.SearchFindStoreActivity" android:screenOrientation="portrait" android:theme="@style/StoreComponentTheme.NoActionBar"/>
+        <activity android:name="com.nike.store.component.internal.map.NearbyStoreMapActivity" android:screenOrientation="portrait" android:theme="@style/StoreComponentTheme.NoActionBar"/>
+        <activity android:name="com.nike.store.component.internal.locator.FindStoreActivity" android:screenOrientation="portrait" android:theme="@style/StoreComponentTheme.NoActionBar"/>
+        <activity android:name="com.nike.store.component.internal.details.StoreDetailsActivity" android:screenOrientation="portrait" android:theme="@style/StoreComponentTheme.NoActionBar"/>
+        <activity android:name="com.nike.store.component.internal.details.StoreDeeplinkActivity" android:screenOrientation="portrait" android:theme="@style/StoreComponentTheme.NoActionBar"/>
+        <activity android:name="com.nike.store.component.internal.picker.SelectStoreSkuActivity" android:screenOrientation="portrait" android:theme="@style/StoreComponentTheme.NoActionBar"/>
+        <activity android:name="com.nike.store.component.internal.component.SearchStoreActivity" android:screenOrientation="portrait" android:theme="@style/StoreComponentTheme.NoActionBar"/>
+        <meta-data android:name="com.bumptech.glide.integration.okhttp3.OkHttpGlideModule" android:value="GlideModule"/>
+        <activity android:name="com.adyen.checkout.dropin.ui.DropInActivity" android:theme="@style/AdyenCheckout.Translucent"/>
+        <activity android:launchMode="singleTask" android:name="com.adyen.checkout.dropin.ui.LoadingActivity" android:theme="@style/AdyenCheckout.Translucent" android:windowSoftInputMode="stateAlwaysHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="com.nike.ntc" android:scheme="adyencheckout"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.nike.unite.sdk.UniteActivity"/>
+        <service android:name="com.nike.unite.sdk.UniteAuthenticationService">
+            <intent-filter>
+                <action android:name="android.accounts.AccountAuthenticator"/>
+            </intent-filter>
+            <meta-data android:name="android.accounts.AccountAuthenticator" android:resource="@xml/authenticator"/>
+        </service>
+        <service android:name="com.nike.unite.sdk.UniteAuthenticationServiceV2">
+            <intent-filter>
+                <action android:name="android.accounts.AccountAuthenticator"/>
+            </intent-filter>
+            <meta-data android:name="android.accounts.AccountAuthenticator" android:resource="@xml/authenticator_v2"/>
+        </service>
+        <receiver android:exported="false" android:name="com.google.android.gms.cast.framework.media.MediaIntentReceiver"/>
+        <service android:exported="false" android:name="com.google.android.gms.cast.framework.media.MediaNotificationService"/>
+        <service android:exported="false" android:name="com.google.android.gms.cast.framework.ReconnectionService"/>
+        <activity android:exported="false" android:hardwareAccelerated="true" android:label="@string/places_autocomplete_label" android:name="com.google.android.libraries.places.widget.AutocompleteActivity" android:theme="@style/PlacesAutocompleteThemeOverlay" android:windowSoftInputMode="stateAlwaysVisible|adjustPan"/>
+        <activity android:launchMode="singleTask" android:name="com.adyen.threeds2.internal.ui.activity.ChallengeActivity" android:theme="@style/ThreeDS2Theme.Internal" android:windowSoftInputMode="stateHidden"/>
+        <receiver android:name="com.adyen.threeds2.internal.AppUpgradeBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED"/>
+            </intent-filter>
+        </receiver>
+        <meta-data android:name="com.google.android.gms.wallet.api.enabled" android:value="true"/>
+        <service android:name="com.adyen.checkout.base.analytics.AnalyticsDispatcher" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:name="com.urbanairship.push.fcm.AirshipFirebaseMessagingService">
+            <intent-filter android:priority="-1">
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <activity android:excludeFromRecents="true" android:exported="false" android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <service android:exported="true" android:name="com.google.android.gms.auth.api.signin.RevocationBoundService" android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"/>
+        <service android:exported="false" android:name="com.google.firebase.messaging.FirebaseMessagingService">
+            <intent-filter android:priority="-500">
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <service android:directBootAware="true" android:exported="false" android:name="com.google.firebase.components.ComponentDiscoveryService">
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.iid.Registrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+        </service>
+        <receiver android:exported="true" android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+            </intent-filter>
+        </receiver>
+        <activity android:exported="false" android:name="com.google.android.gms.common.api.GoogleApiActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <provider android:authorities="com.nike.ntc.firebaseinitprovider" android:exported="false" android:initOrder="100" android:name="com.google.firebase.provider.FirebaseInitProvider"/>
+        <service android:enabled="true" android:exported="false" android:name="com.castlabs.sdk.downloader.DownloadService"/>
+        <receiver android:name="com.castlabs.sdk.drm.TimeChangeReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.TIME_SET"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.ACTION_BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <service android:enabled="true" android:exported="false" android:name="com.castlabs.android.player.PlayerService"/>
+        <meta-data android:name="player_sdk_error_handling" android:value="REPORT"/>
+        <activity android:clearTaskOnLaunch="true" android:name="com.journeyapps.barcodescanner.CaptureActivity" android:screenOrientation="sensorLandscape" android:stateNotNeeded="true" android:theme="@style/zxing_CaptureTheme" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:exported="false" android:name="com.urbanairship.iam.html.HtmlActivity" android:theme="@style/UrbanAirship.InAppHtml.Activity">
+            <meta-data android:name="com.urbanairship.push.iam.EXCLUDE_FROM_AUTO_SHOW" android:value="true"/>
+        </activity>
+        <activity android:exported="false" android:name="com.urbanairship.iam.fullscreen.FullScreenActivity" android:theme="@style/UrbanAirship.InAppFullscreen.Activity">
+            <meta-data android:name="com.urbanairship.push.iam.EXCLUDE_FROM_AUTO_SHOW" android:value="true"/>
+        </activity>
+        <activity android:exported="false" android:name="com.urbanairship.iam.modal.ModalActivity" android:theme="@style/UrbanAirship.InAppModal.Activity">
+            <meta-data android:name="com.urbanairship.push.iam.EXCLUDE_FROM_AUTO_SHOW" android:value="true"/>
+        </activity>
+        <activity android:exported="false" android:name="com.urbanairship.push.NotificationProxyActivity" android:taskAffinity="com.urbanairship.push.NotificationProxyActivity" android:theme="@android:style/Theme.NoDisplay"/>
+        <activity android:exported="false" android:name="com.urbanairship.messagecenter.MessageActivity"/>
+        <activity android:exported="false" android:label="@string/ua_message_center_title" android:name="com.urbanairship.messagecenter.MessageCenterActivity"/>
+        <activity android:exported="false" android:name="com.urbanairship.util.HelperActivity" android:theme="@style/UrbanAirship.HelperActivity">
+            <meta-data android:name="com.urbanairship.push.iam.EXCLUDE_FROM_AUTO_SHOW" android:value="true"/>
+        </activity>
+        <activity android:exported="false" android:name="com.urbanairship.google.PlayServicesErrorActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <meta-data android:name="com.urbanairship.push.iam.EXCLUDE_FROM_AUTO_SHOW" android:value="true"/>
+        </activity>
+        <activity android:exported="false" android:name="com.urbanairship.actions.RateAppActivity" android:theme="@style/UrbanAirship.RateAppActivity">
+            <meta-data android:name="com.urbanairship.push.iam.EXCLUDE_FROM_AUTO_SHOW" android:value="true"/>
+            <intent-filter>
+                <action android:name="com.urbanairship.actions.SHOW_RATE_APP_INTENT_ACTION"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:exported="false" android:name="com.urbanairship.ChannelCaptureActivity">
+            <meta-data android:name="com.urbanairship.push.iam.EXCLUDE_FROM_AUTO_SHOW" android:value="true"/>
+        </activity>
+        <service android:name="com.urbanairship.job.AirshipService"/>
+        <receiver android:exported="false" android:name="com.urbanairship.location.LocationReceiver"/>
+        <service android:name="com.urbanairship.job.AndroidJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <receiver android:exported="false" android:name="com.urbanairship.push.NotificationProxyReceiver">
+            <intent-filter android:priority="-999">
+                <action android:name="com.urbanairship.push.OPENED"/>
+                <category android:name="com.nike.ntc"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:exported="false" android:name="com.urbanairship.locale.LocaleChangeReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.LOCALE_CHANGED"/>
+            </intent-filter>
+        </receiver>
+        <provider android:authorities="com.nike.ntc.urbanairship.provider" android:exported="false" android:name="com.urbanairship.UrbanAirshipProvider"/>
+        <provider android:authorities="com.nike.ntc.lifecycle-process" android:exported="false" android:multiprocess="true" android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"/>
+        <service android:name="com.nike.dropship.manifest.ManifestDeployerService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:name="com.nike.dropship.download.DownloadJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:exported="false" android:name="com.nike.dropship.download.DownloadForegroundService" android:stopWithTask="false"/>
+        <service android:name="com.nike.dropship.urlmanager.UrlManagerService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:exported="false" android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery">
+            <meta-data android:name="backend:com.google.android.datatransport.cct.CctBackendFactory" android:value="cct"/>
+        </service>
+        <service android:exported="false" android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <receiver android:exported="false" android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"/>
+        <service android:directBootAware="true" android:exported="false" android:name="androidx.room.MultiInstanceInvalidationService"/>
+        <service android:enabled="true" android:exported="false" android:name="com.optimizely.ab.android.datafile_handler.DatafileService"/>
+        <service android:exported="false" android:name="com.optimizely.ab.android.event_handler.EventIntentService"/>
+        <meta-data android:name="com.google.android.play.billingclient.version" android:value="2.0.3"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize" android:name="com.android.billingclient.api.ProxyBillingActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <service android:name="com.optimizely.ab.android.shared.JobWorkService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:name="com.optimizely.ab.android.shared.ScheduledJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+    </application>
+</manifest>

@@ -1,0 +1,8 @@
+Binário firefox.exe e chrome.exe contém a seção .text executável: rx
+Binário firefox.exe e chrome.exe contém a seção .rdata [não] executável: r
+Binário firefox.exe e chrome.exe contém a seção .data [não] executável: rw
+Binário firefox.exe e chrome.exe contém a seção .pdata [não] executável: r
+Binário firefox.exe e chrome.exe contém a seção .00cfg [não] executável: r
+Binário firefox.exe e chrome.exe contém a seção .tls [não] executável: rw
+Binário firefox.exe e chrome.exe contém a seção .rsrc [não] executável: r
+Binário firefox.exe e chrome.exe contém a seção .reloc [não] executável: r

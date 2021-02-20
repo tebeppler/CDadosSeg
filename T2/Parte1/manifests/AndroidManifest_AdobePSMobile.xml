@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:compileSdkVersion="30" android:compileSdkVersionCodename="11" android:installLocation="auto" package="com.adobe.psmobile" platformBuildVersionCode="30" platformBuildVersionName="11">
+    <uses-feature android:glEsVersion="0x00020000"/>
+    <uses-feature android:name="android.hardware.camera" android:required="false"/>
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.NETWORK"/>
+    <uses-permission android:name="android.permission.USE_CREDENTIALS"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.SET_WALLPAPER"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="com.samsung.android.iap.permission.BILLING"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE"/>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+    <uses-permission android:name="com.android.vending.BILLING"/>
+    <application android:allowBackup="true" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:icon="@mipmap/icon_launcher" android:label="@string/psx_app_name" android:largeHeap="true" android:name="com.adobe.psmobile.PSExpressApplication" android:requestLegacyExternalStorage="true" android:supportsRtl="false" android:theme="@style/PSXAppTheme">
+        <meta-data android:name="com.samsung.android.icon_container.has_icon_container" android:value="true"/>
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+        <activity android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize" android:label="@string/psx_app_name" android:launchMode="singleTask" android:name="com.adobe.psmobile.MainActivity">
+            <intent-filter android:label="@string/psx_app_name">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="photoshopexpressandroid.adobe.com" android:pathPrefix="/imagepicker" android:scheme="http"/>
+                <data android:host="photoshopexpressandroid.adobe.com" android:pathPrefix="/learnPS" android:scheme="psxa"/>
+                <data android:host="www.adobe.com" android:pathPrefix="/go/getpsxa" android:scheme="http"/>
+            </intent-filter>
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.adobe.psmobile.SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
+                <data android:scheme="com.adobe.photoshopexpress"/>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+            </intent-filter>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="photoshopexpress.app.link" android:scheme="https"/>
+                <data android:host="photoshopexpress-alternate.app.link" android:scheme="https"/>
+            </intent-filter>
+        </activity>
+        <meta-data android:name="io.branch.sdk.BranchKey" android:value="key_live_fhPo4Nlbi7AIL5ltTMYpxllnxvljUYEs"/>
+        <meta-data android:name="io.branch.sdk.BranchKey.test" android:value="key_test_clOk3Qgan3DKK0bAVK9HUjgiqxieVZrO"/>
+        <meta-data android:name="io.branch.sdk.TestMode" android:value="false"/>
+        <activity android:name="com.adobe.creativeapps.settings.activity.PSXSettingsProfileActivity"/>
+        <activity android:name="com.adobe.creativeapps.settings.activity.PSXSettingsAboutAppActivity"/>
+        <activity android:name="com.adobe.creativeapps.settings.activity.PSXSettingsPreferencesActivity"/>
+        <activity android:name="com.adobe.creativeapps.settings.activity.PSXSettingsOnBoardingActivity"/>
+        <activity android:name="com.adobe.creativeapps.settings.activity.PSXSettingsWatermarkCreationActivity" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name="com.adobe.creativeapps.settings.activity.PSXSettingsDebugActivity"/>
+        <activity android:name="com.adobe.creativeapps.settings.activity.PSXSettingsLearnPSActivity"/>
+        <activity android:name="com.adobe.creativeapps.settings.activity.PSXSettingsHelpAndFeedbackActivity"/>
+        <activity android:name="com.adobe.pscollage.ui.activities.activity.PSXCollageActivity"/>
+        <activity android:name="com.adobe.creativeapps.settings.activity.PSXSettingsJPEGQualityActivity"/>
+        <activity android:name="com.adobe.creativeapps.settings.activity.PSXSettingsImageSizeActivity"/>
+        <activity android:name="com.adobe.creativeapps.settings.activity.PSXAdvancedSettingsActivity"/>
+        <activity android:name="com.adobe.psmobile.tutorials.TourViewActivity"/>
+        <activity android:name="com.adobe.ozintegration.LoginActivity"/>
+        <activity android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize" android:name="com.adobe.ozintegration.IMSLoginActivity" android:noHistory="false" android:windowSoftInputMode="adjustResize"/>
+        <activity android:name="com.adobe.marketing.mobile.MessageFullScreenActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" android:windowSoftInputMode="stateHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize" android:launchMode="singleTask" android:name="com.adobe.psmobile.PSXEditActivity">
+            <intent-filter>
+                <action android:name="com.adobe.psmobile.IMAGE_EDITOR"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.EDIT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="image/jpeg"/>
+                <data android:mimeType="image/png"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.EDIT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="file"/>
+                <data android:mimeType="*/*"/>
+                <data android:host="*"/>
+                <data android:pathPattern=".*\\.cr2"/>
+                <data android:pathPattern=".*\\.CR2"/>
+                <data android:pathPattern=".*\\.arw"/>
+                <data android:pathPattern=".*\\.ARW"/>
+                <data android:pathPattern=".*\\.crw"/>
+                <data android:pathPattern=".*\\.CRW"/>
+                <data android:pathPattern=".*\\.dng"/>
+                <data android:pathPattern=".*\\.DNG"/>
+                <data android:pathPattern=".*\\.erf"/>
+                <data android:pathPattern=".*\\.ERF"/>
+                <data android:pathPattern=".*\\.raf"/>
+                <data android:pathPattern=".*\\.RAF"/>
+                <data android:pathPattern=".*\\.3fr"/>
+                <data android:pathPattern=".*\\.3FR"/>
+                <data android:pathPattern=".*\\.fff"/>
+                <data android:pathPattern=".*\\.FFF"/>
+                <data android:pathPattern=".*\\.dcr"/>
+                <data android:pathPattern=".*\\.DCR"/>
+                <data android:pathPattern=".*\\.mrw"/>
+                <data android:pathPattern=".*\\.MRW"/>
+                <data android:pathPattern=".*\\.mos"/>
+                <data android:pathPattern=".*\\.MOS"/>
+                <data android:pathPattern=".*\\.rwl"/>
+                <data android:pathPattern=".*\\.RWL"/>
+                <data android:pathPattern=".*\\.nef"/>
+                <data android:pathPattern=".*\\.NEF"/>
+                <data android:pathPattern=".*\\.nrw"/>
+                <data android:pathPattern=".*\\.NRW"/>
+                <data android:pathPattern=".*\\.orf"/>
+                <data android:pathPattern=".*\\.ORF"/>
+                <data android:pathPattern=".*\\.rw2"/>
+                <data android:pathPattern=".*\\.RW2"/>
+                <data android:pathPattern=".*\\.pef"/>
+                <data android:pathPattern=".*\\.PEF"/>
+                <data android:pathPattern=".*\\.srw"/>
+                <data android:pathPattern=".*\\.SRW"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="image/jpeg"/>
+                <data android:mimeType="image/png"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="file"/>
+                <data android:mimeType="*/*"/>
+                <data android:host="*"/>
+                <data android:pathPattern=".*\\.cr2"/>
+                <data android:pathPattern=".*\\.CR2"/>
+                <data android:pathPattern=".*\\.arw"/>
+                <data android:pathPattern=".*\\.ARW"/>
+                <data android:pathPattern=".*\\.crw"/>
+                <data android:pathPattern=".*\\.CRW"/>
+                <data android:pathPattern=".*\\.dng"/>
+                <data android:pathPattern=".*\\.DNG"/>
+                <data android:pathPattern=".*\\.erf"/>
+                <data android:pathPattern=".*\\.ERF"/>
+                <data android:pathPattern=".*\\.raf"/>
+                <data android:pathPattern=".*\\.RAF"/>
+                <data android:pathPattern=".*\\.3fr"/>
+                <data android:pathPattern=".*\\.3FR"/>
+                <data android:pathPattern=".*\\.fff"/>
+                <data android:pathPattern=".*\\.FFF"/>
+                <data android:pathPattern=".*\\.dcr"/>
+                <data android:pathPattern=".*\\.DCR"/>
+                <data android:pathPattern=".*\\.mrw"/>
+                <data android:pathPattern=".*\\.MRW"/>
+                <data android:pathPattern=".*\\.mos"/>
+                <data android:pathPattern=".*\\.MOS"/>
+                <data android:pathPattern=".*\\.rwl"/>
+                <data android:pathPattern=".*\\.RWL"/>
+                <data android:pathPattern=".*\\.nef"/>
+                <data android:pathPattern=".*\\.NEF"/>
+                <data android:pathPattern=".*\\.nrw"/>
+                <data android:pathPattern=".*\\.NRW"/>
+                <data android:pathPattern=".*\\.orf"/>
+                <data android:pathPattern=".*\\.ORF"/>
+                <data android:pathPattern=".*\\.rw2"/>
+                <data android:pathPattern=".*\\.RW2"/>
+                <data android:pathPattern=".*\\.pef"/>
+                <data android:pathPattern=".*\\.PEF"/>
+                <data android:pathPattern=".*\\.srw"/>
+                <data android:pathPattern=".*\\.SRW"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="image/jpeg"/>
+                <data android:mimeType="image/png"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="file"/>
+                <data android:mimeType="*/*"/>
+                <data android:host="*"/>
+                <data android:pathPattern=".*\\.cr2"/>
+                <data android:pathPattern=".*\\.CR2"/>
+                <data android:pathPattern=".*\\.arw"/>
+                <data android:pathPattern=".*\\.ARW"/>
+                <data android:pathPattern=".*\\.crw"/>
+                <data android:pathPattern=".*\\.CRW"/>
+                <data android:pathPattern=".*\\.dng"/>
+                <data android:pathPattern=".*\\.DNG"/>
+                <data android:pathPattern=".*\\.erf"/>
+                <data android:pathPattern=".*\\.ERF"/>
+                <data android:pathPattern=".*\\.raf"/>
+                <data android:pathPattern=".*\\.RAF"/>
+                <data android:pathPattern=".*\\.3fr"/>
+                <data android:pathPattern=".*\\.3FR"/>
+                <data android:pathPattern=".*\\.fff"/>
+                <data android:pathPattern=".*\\.FFF"/>
+                <data android:pathPattern=".*\\.dcr"/>
+                <data android:pathPattern=".*\\.DCR"/>
+                <data android:pathPattern=".*\\.mrw"/>
+                <data android:pathPattern=".*\\.MRW"/>
+                <data android:pathPattern=".*\\.mos"/>
+                <data android:pathPattern=".*\\.MOS"/>
+                <data android:pathPattern=".*\\.rwl"/>
+                <data android:pathPattern=".*\\.RWL"/>
+                <data android:pathPattern=".*\\.nef"/>
+                <data android:pathPattern=".*\\.NEF"/>
+                <data android:pathPattern=".*\\.nrw"/>
+                <data android:pathPattern=".*\\.NRW"/>
+                <data android:pathPattern=".*\\.orf"/>
+                <data android:pathPattern=".*\\.ORF"/>
+                <data android:pathPattern=".*\\.rw2"/>
+                <data android:pathPattern=".*\\.RW2"/>
+                <data android:pathPattern=".*\\.pef"/>
+                <data android:pathPattern=".*\\.PEF"/>
+                <data android:pathPattern=".*\\.srw"/>
+                <data android:pathPattern=".*\\.SRW"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.adobe.psmobile.export.PSXExportActivity"/>
+        <receiver android:name="com.adobe.marketing.mobile.LocalNotificationHandler"/>
+        <receiver android:exported="true" android:name="com.adobe.psmobile.utils.PSXNotificationPublisher">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name=".notification_cancelled"/>
+                <action android:name=".notification_postponed"/>
+            </intent-filter>
+        </receiver>
+        <provider android:authorities="@string/fb_provider_id" android:exported="true" android:name="com.facebook.FacebookContentProvider"/>
+        <provider android:authorities="com.adobe.psmobile.provider" android:exported="false" android:grantUriPermissions="true" android:name="androidx.core.content.FileProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/provider_paths"/>
+        </provider>
+        <activity android:name="com.adobe.psmobile.psxgallery.PSXGalleryActivity"/>
+        <activity android:name="com.adobe.creativesdk.foundation.applibrary.internal.AppLibraryActivity" android:theme="@style/Adobe_CSDK_AppLibraryTheme"/>
+        <activity android:documentLaunchMode="never" android:excludeFromRecents="true" android:exported="false" android:finishOnCloseSystemDialogs="true" android:name="com.adobe.creativesdk.foundation.applibrary.internal.ActionResolverActivity" android:relinquishTaskIdentity="true" android:theme="@style/BottomSheet.Light"/>
+        <activity android:exported="false" android:name="com.behance.sdk.ui.activities.BehanceSDKProjectEditorActivity" android:theme="@style/BsdkMaterialBaseTheme"/>
+        <activity android:name="com.behance.sdk.ui.activities.BehanceSDKCropperActivity" android:theme="@style/BsdkMaterialBaseTheme"/>
+        <activity android:exported="false" android:name="com.behance.sdk.ui.activities.BehanceSDKPublishProjectActivity" android:theme="@style/BsdkAddProjectActivityTheme"/>
+        <activity android:exported="false" android:name="com.behance.sdk.ui.activities.BehanceSDKCreateProjectWFActivity" android:theme="@style/BsdkAddProjectActivityTheme"/>
+        <activity android:name="com.behance.sdk.ui.activities.BehanceSDKPublishResultsActivity" android:theme="@style/BsdkPublishResultsActivityTheme"/>
+        <activity android:exported="false" android:name="com.behance.sdk.ui.activities.BehanceSDKEditProfileActivity" android:theme="@style/BsdkMaterialBaseTheme"/>
+        <activity android:exported="false" android:name="com.facebook.LoginActivity" android:theme="@style/BsdkFacebookLoginActivityTheme"/>
+        <activity android:exported="false" android:name="com.behance.sdk.ui.activities.BehanceSDKLoginToTwitterActivity"/>
+        <activity android:exported="false" android:name="com.behance.sdk.ui.activities.BehanceSDKUnlinkSocialAccountActivity" android:theme="@style/BsdkUnlinkSocialAccountActivityTheme"/>
+        <activity android:name="com.behance.sdk.ui.activities.BehanceSDKAdobeCloudSelectionActivity" android:theme="@style/BsdkAdobeCloudSelectionViewTheme"/>
+        <activity android:name="com.behance.sdk.ui.activities.BehanceSDKProjectDetailActivity" android:theme="@style/BsdkBaseThemeTransparentSystemUI.Dark"/>
+        <activity android:name="com.behance.sdk.ui.activities.BehanceSDKCCLauncherActivity" android:theme="@style/BsdkAdobeCCLauncherActivityTheme"/>
+        <service android:name="com.behance.sdk.services.BehanceSDKPublishProjectService"/>
+        <service android:enabled="true" android:name="com.amazonaws.mobileconnectors.s3.transferutility.TransferService"/>
+        <service android:name="com.behance.sdk.services.BehanceSDKProjectEditorService"/>
+        <activity android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize" android:exported="false" android:name="com.adobe.creativesdk.foundation.internal.storage.controllers.AdobeUXAssetOneUpViewerActivity" android:theme="@style/AdobeAssetViewerLightTheme"/>
+        <activity android:configChanges="orientation|screenSize" android:exported="false" android:name="com.adobe.creativesdk.foundation.internal.storage.controllers.AdobeUXPhotoAssetOneUpViewerActivity" android:theme="@style/AdobeAssetViewerLightTheme"/>
+        <activity android:configChanges="orientation|screenSize" android:exported="false" android:name="com.adobe.creativesdk.foundation.internal.storage.controllers.AdobeUxAssetBrowserV2Activity" android:theme="@style/AdobeCSDKThemeActivity"/>
+        <activity android:configChanges="orientation|screenSize" android:exported="false" android:name="com.adobe.creativesdk.foundation.internal.storage.controllers.AdobeUXAssetVideoActivity" android:theme="@style/AdobeAssetViewerLightTheme"/>
+        <activity android:configChanges="orientation|screenSize" android:exported="false" android:name="com.adobe.creativesdk.foundation.internal.storage.controllers.AdobeUXLibraryItemCollectionOneUpViewerActivity" android:theme="@style/AdobeAssetViewerLightTheme"/>
+        <activity android:configChanges="orientation|screenSize" android:exported="false" android:name="com.adobe.creativesdk.foundation.internal.storage.controllers.AdobeUXMobilePackageItemOneUpViewerActivity" android:theme="@style/AdobeAssetViewerLightTheme"/>
+        <activity android:configChanges="orientation|screenSize" android:exported="false" android:name="com.adobe.creativesdk.foundation.internal.storage.controllers.AdobeUXCompositionOneUpViewerActivity" android:theme="@style/AdobeAssetViewerLightTheme"/>
+        <activity android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize" android:exported="false" android:name="com.adobe.creativesdk.foundation.internal.storage.controllers.edit.AdobeAssetEditActivity" android:theme="@style/AdobeEditThemeActivity"/>
+        <activity android:configChanges="orientation|screenSize" android:exported="false" android:name="com.adobe.creativesdk.foundation.internal.storage.controllers.libraryedit.AdobeDesignLibraryMoveActivity" android:theme="@style/AdobeEditThemeActivity"/>
+        <activity android:configChanges="orientation|screenSize" android:exported="false" android:name="com.adobe.creativesdk.foundation.internal.settings.CloudPickerActivity" android:theme="@style/AdobeCSDKThemeActivity.NoActionBar"/>
+        <activity android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize" android:exported="false" android:name="com.adobe.creativesdk.foundation.internal.storage.controllers.AdobeShowUploadTasksActivity" android:resizeableActivity="true" android:theme="@style/AdobeAssetViewerLightTheme"/>
+        <activity android:name="com.adobe.creativesdk.color.internal.ui.activity.ColorThemeEditActivity" android:theme="@style/CSDKColor.ToolbarTheme" android:windowSoftInputMode="adjustNothing"/>
+        <activity android:name="com.adobe.creativesdk.color.internal.ui.activity.ColorComponentActivity" android:theme="@style/CSDKColor.ActionBarTheme" android:windowSoftInputMode="adjustNothing"/>
+        <activity android:name="com.adobe.creativesdk.color.internal.ui.activity.LibraryColorItemsListActivity" android:theme="@style/CSDKColor.ToolbarTheme"/>
+        <activity android:configChanges="orientation|screenSize" android:label="@string/adobe_csdk_creative_cloud" android:launchMode="singleTask" android:multiprocess="true" android:name="com.adobe.creativesdk.foundation.internal.auth.AdobeAuthSignInActivity" android:theme="@style/Theme.AdobeSpectrum.Lightest.NoActionBar" android:windowSoftInputMode="adjustNothing|stateUnchanged"/>
+        <activity android:exported="false" android:label="@string/adobe_csdk_creative_cloud" android:launchMode="standard" android:multiprocess="true" android:name="com.adobe.creativesdk.foundation.internal.auth.AdobeAuthContinuableEventActivity" android:theme="@style/Theme.AdobeSpectrum.Lightest.NoActionBar" android:windowSoftInputMode="adjustNothing|stateUnchanged"/>
+        <activity android:name="com.adobe.creativesdk.foundation.internal.base.AdobeTOUHandlerActivity"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize" android:name="com.facebook.FacebookActivity" android:theme="@style/com_facebook_activity_theme"/>
+        <activity android:name="com.facebook.CustomTabMainActivity"/>
+        <activity android:name="com.facebook.CustomTabActivity"/>
+        <activity android:configChanges="keyboardHidden|screenLayout|screenSize|smallestScreenSize|uiMode" android:excludeFromRecents="true" android:launchMode="singleTask" android:name="com.adobe.libs.installpromotion.InstallPromotionActivity" android:taskAffinity="com.adobe.libs.installpromotion.task" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity-alias android:enabled="false" android:icon="@mipmap/acrobat_launcher" android:label="@string/acrobat_install" android:name="com.adobe.libs.installpromotion.IntentCheckAcrobat" android:targetActivity="com.adobe.libs.installpromotion.InstallPromotionActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:host="*" android:pathPattern=".*\\.pdf" android:scheme="file"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="application/pdf"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="file"/>
+                <data android:scheme="content"/>
+                <data android:scheme="http"/>
+                <data android:scheme="https"/>
+                <data android:mimeType="application/pdf"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:enabled="false" android:icon="@mipmap/acrobat_launcher" android:label="@string/acrobat_install" android:name="com.adobe.libs.installpromotion.IntentCheckAcrobatEdit" android:targetActivity="com.adobe.libs.installpromotion.InstallPromotionActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.EDIT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:host="*" android:pathPattern=".*\\.pdf" android:scheme="file"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.EDIT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="application/pdf"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.EDIT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="file"/>
+                <data android:scheme="content"/>
+                <data android:scheme="http"/>
+                <data android:scheme="https"/>
+                <data android:mimeType="application/pdf"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:enabled="false" android:icon="@mipmap/scan_launcher" android:label="@string/scan_install" android:name="com.adobe.libs.installpromotion.IntentCheckScan" android:targetActivity="com.adobe.libs.installpromotion.InstallPromotionActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="image/*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND_MULTIPLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="image/*"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:enabled="false" android:icon="@mipmap/psx_launcher" android:label="@string/photoshop_install" android:name="com.adobe.libs.installpromotion.IntentCheckPSXView" android:targetActivity="com.adobe.libs.installpromotion.InstallPromotionActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="image/jpeg"/>
+                <data android:mimeType="image/png"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="file"/>
+                <data android:mimeType="*/*"/>
+                <data android:host="*"/>
+                <data android:pathPattern=".*\\.cr2"/>
+                <data android:pathPattern=".*\\.CR2"/>
+                <data android:pathPattern=".*\\.arw"/>
+                <data android:pathPattern=".*\\.ARW"/>
+                <data android:pathPattern=".*\\.crw"/>
+                <data android:pathPattern=".*\\.CRW"/>
+                <data android:pathPattern=".*\\.dng"/>
+                <data android:pathPattern=".*\\.DNG"/>
+                <data android:pathPattern=".*\\.erf"/>
+                <data android:pathPattern=".*\\.ERF"/>
+                <data android:pathPattern=".*\\.raf"/>
+                <data android:pathPattern=".*\\.RAF"/>
+                <data android:pathPattern=".*\\.3fr"/>
+                <data android:pathPattern=".*\\.3FR"/>
+                <data android:pathPattern=".*\\.fff"/>
+                <data android:pathPattern=".*\\.FFF"/>
+                <data android:pathPattern=".*\\.dcr"/>
+                <data android:pathPattern=".*\\.DCR"/>
+                <data android:pathPattern=".*\\.mrw"/>
+                <data android:pathPattern=".*\\.MRW"/>
+                <data android:pathPattern=".*\\.mos"/>
+                <data android:pathPattern=".*\\.MOS"/>
+                <data android:pathPattern=".*\\.rwl"/>
+                <data android:pathPattern=".*\\.RWL"/>
+                <data android:pathPattern=".*\\.nef"/>
+                <data android:pathPattern=".*\\.NEF"/>
+                <data android:pathPattern=".*\\.nrw"/>
+                <data android:pathPattern=".*\\.NRW"/>
+                <data android:pathPattern=".*\\.orf"/>
+                <data android:pathPattern=".*\\.ORF"/>
+                <data android:pathPattern=".*\\.rw2"/>
+                <data android:pathPattern=".*\\.RW2"/>
+                <data android:pathPattern=".*\\.pef"/>
+                <data android:pathPattern=".*\\.PEF"/>
+                <data android:pathPattern=".*\\.srw"/>
+                <data android:pathPattern=".*\\.SRW"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:enabled="false" android:icon="@mipmap/psx_launcher" android:label="@string/photoshop_install" android:name="com.adobe.libs.installpromotion.IntentCheckPSXSend" android:targetActivity="com.adobe.libs.installpromotion.InstallPromotionActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="image/jpeg"/>
+                <data android:mimeType="image/png"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="file"/>
+                <data android:mimeType="*/*"/>
+                <data android:host="*"/>
+                <data android:pathPattern=".*\\.cr2"/>
+                <data android:pathPattern=".*\\.CR2"/>
+                <data android:pathPattern=".*\\.arw"/>
+                <data android:pathPattern=".*\\.ARW"/>
+                <data android:pathPattern=".*\\.crw"/>
+                <data android:pathPattern=".*\\.CRW"/>
+                <data android:pathPattern=".*\\.dng"/>
+                <data android:pathPattern=".*\\.DNG"/>
+                <data android:pathPattern=".*\\.erf"/>
+                <data android:pathPattern=".*\\.ERF"/>
+                <data android:pathPattern=".*\\.raf"/>
+                <data android:pathPattern=".*\\.RAF"/>
+                <data android:pathPattern=".*\\.3fr"/>
+                <data android:pathPattern=".*\\.3FR"/>
+                <data android:pathPattern=".*\\.fff"/>
+                <data android:pathPattern=".*\\.FFF"/>
+                <data android:pathPattern=".*\\.dcr"/>
+                <data android:pathPattern=".*\\.DCR"/>
+                <data android:pathPattern=".*\\.mrw"/>
+                <data android:pathPattern=".*\\.MRW"/>
+                <data android:pathPattern=".*\\.mos"/>
+                <data android:pathPattern=".*\\.MOS"/>
+                <data android:pathPattern=".*\\.rwl"/>
+                <data android:pathPattern=".*\\.RWL"/>
+                <data android:pathPattern=".*\\.nef"/>
+                <data android:pathPattern=".*\\.NEF"/>
+                <data android:pathPattern=".*\\.nrw"/>
+                <data android:pathPattern=".*\\.NRW"/>
+                <data android:pathPattern=".*\\.orf"/>
+                <data android:pathPattern=".*\\.ORF"/>
+                <data android:pathPattern=".*\\.rw2"/>
+                <data android:pathPattern=".*\\.RW2"/>
+                <data android:pathPattern=".*\\.pef"/>
+                <data android:pathPattern=".*\\.PEF"/>
+                <data android:pathPattern=".*\\.srw"/>
+                <data android:pathPattern=".*\\.SRW"/>
+            </intent-filter>
+        </activity-alias>
+        <receiver android:enabled="true" android:exported="true" android:name="com.adobe.libs.installpromotion.PackageInstallNotificationBroadcast">
+            <intent-filter>
+                <action android:name="com.adobe.libs.InstallPromotion.InstallBroadcast"/>
+            </intent-filter>
+        </receiver>
+        <service android:directBootAware="true" android:exported="false" android:name="com.google.firebase.components.ComponentDiscoveryService">
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.crashlytics.ndk.CrashlyticsNdkRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.crashlytics.CrashlyticsRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.iid.Registrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+        </service>
+        <activity android:excludeFromRecents="true" android:exported="false" android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <service android:exported="true" android:name="com.google.android.gms.auth.api.signin.RevocationBoundService" android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION" android:visibleToInstantApps="true"/>
+        <service android:directBootAware="true" android:exported="false" android:name="com.google.firebase.messaging.FirebaseMessagingService">
+            <intent-filter android:priority="-500">
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <receiver android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementReceiver"/>
+        <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementService"/>
+        <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <receiver android:exported="true" android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+            </intent-filter>
+        </receiver>
+        <provider android:authorities="com.adobe.psmobile.MarketingInitProvider" android:exported="false" android:name="com.facebook.marketing.internal.MarketingInitProvider"/>
+        <provider android:authorities="com.adobe.psmobile.FacebookInitProvider" android:exported="false" android:name="com.facebook.internal.FacebookInitProvider"/>
+        <receiver android:exported="false" android:name="com.facebook.CurrentAccessTokenExpirationBroadcastReceiver">
+            <intent-filter>
+                <action android:name="com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED"/>
+            </intent-filter>
+        </receiver>
+        <provider android:authorities="com.adobe.psmobile.firebaseinitprovider" android:directBootAware="true" android:exported="false" android:initOrder="100" android:name="com.google.firebase.provider.FirebaseInitProvider"/>
+        <activity android:exported="false" android:name="com.google.android.gms.common.api.GoogleApiActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <service android:exported="false" android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery">
+            <meta-data android:name="backend:com.google.android.datatransport.cct.CctBackendFactory" android:value="cct"/>
+        </service>
+        <service android:exported="false" android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <receiver android:exported="false" android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"/>
+        <activity android:configChanges="orientation|screenSize" android:name="com.samsung.android.sdk.iap.lib.activity.DialogActivity" android:theme="@style/Theme.Empty"/>
+        <activity android:configChanges="orientation|screenSize" android:name="com.samsung.android.sdk.iap.lib.activity.CheckPackageActivity" android:theme="@style/Theme.Empty"/>
+        <activity android:configChanges="orientation|screenSize" android:name="com.samsung.android.sdk.iap.lib.activity.AccountActivity" android:theme="@style/Theme.Transparent"/>
+        <activity android:configChanges="orientation|screenSize" android:name="com.samsung.android.sdk.iap.lib.activity.PaymentActivity" android:theme="@style/Theme.Empty"/>
+        <meta-data android:name="com.google.android.play.billingclient.version" android:value="2.1.0"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize" android:name="com.android.billingclient.api.ProxyBillingActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+    </application>
+</manifest>

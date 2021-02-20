@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:compileSdkVersion="29" android:compileSdkVersionCodename="10" android:installLocation="auto" package="org.coursera.android" platformBuildVersionCode="29" platformBuildVersionName="10">
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission-sdk-23 android:name="android.permission.WRITE_CALENDAR"/>
+    <uses-permission-sdk-23 android:name="android.permission.READ_CALENDAR"/>
+    <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
+    <uses-feature android:name="android.hardware.camera" android:required="false"/>
+    <uses-permission android:name="android.permission.READ_CALENDAR"/>
+    <uses-permission android:name="android.permission.WRITE_CALENDAR"/>
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS"/>
+    <uses-permission android:name="android.permission.READ_SYNC_STATS"/>
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW"/>
+            <category android:name="android.intent.category.BROWSABLE"/>
+            <data android:scheme="https"/>
+        </intent>
+    </queries>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE"/>
+    <application android:allowBackup="false" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:icon="@mipmap/launcher_icon" android:label="@string/application_name" android:largeHeap="true" android:logo="@color/transparent" android:name="org.coursera.android.CourseraApplication" android:roundIcon="@mipmap/launcher_icon_round" android:supportsRtl="true" android:theme="@style/CourseraBlackActionBarTheme">
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/app_id"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize" android:label="@string/app_name" android:name="com.facebook.FacebookActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:launchMode="singleTop" android:name="org.coursera.android.MainActivity" android:noHistory="true" android:theme="@android:style/Theme.Holo.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.braintreepayments.api.BraintreeBrowserSwitchActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="org.coursera.android.braintree"/>
+            </intent-filter>
+        </activity>
+        <receiver android:enabled="false" android:name="org.coursera.android.module.course_content_v2_kotlin.notifications.RebootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="org.coursera.android.module.course_content_v2_kotlin.notifications.CourseNotificationsReceiver">
+            <intent-filter>
+                <action android:name="org.coursera.android.module.course_content_v2_kotlin.notifications.UPDATE_NOTIFICATIONS"/>
+                <action android:name="org.coursera.android.module.course_content_v2_kotlin.notifications.REMOVE_NOTIFICATIONS"/>
+                <action android:name="org.coursera.android.module.course_content_v2_kotlin.notifications.DISMISS_NOTIFICATION"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="org.coursera.android.module.course_outline.flexmodule_v2.service.REMOVE_OFFLINE_ITEMS"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="org.coursera.android.widget.CourseraWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="org.coursera.android.widget.WIDGET_SELECTION"/>
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/coursera_appwidget_info"/>
+        </receiver>
+        <receiver android:name="org.coursera.core.fcm.FCMNotificationClickedReceiver"/>
+        <receiver android:name="org.coursera.core.fcm.FCMNotificationDeletedReceiver"/>
+        <service android:exported="false" android:name="org.coursera.android.utils.PrefetchData"/>
+        <service android:exported="false" android:name="org.coursera.core.fcm.CourseraFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <activity android:label="@string/app_name" android:name="org.coursera.android.MainRouterActivity" android:noHistory="true">
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:host="www.coursera.org" android:pathPattern="/browse" android:scheme="https"/>
+                <data android:host="www.coursera.org" android:pathPattern="/browse/.*" android:scheme="https"/>
+                <data android:host="www.coursera.org" android:pathPattern="/learn/.*" android:scheme="https"/>
+                <data android:host="www.coursera.org" android:pathPattern="/enrollments" android:scheme="https"/>
+                <data android:host="www.coursera.org" android:pathPattern="/learn/.*/home" android:scheme="https"/>
+                <data android:host="www.coursera.org" android:pathPattern="/learn/.*/home/.*" android:scheme="https"/>
+                <data android:host="www.coursera.org" android:pathPattern="/learn/.*/exam/.*" android:scheme="https"/>
+                <data android:host="www.coursera.org" android:pathPattern="/learn/.*/quiz/.*" android:scheme="https"/>
+                <data android:host="www.coursera.org" android:pathPattern="/learn/.*/discussions/.*" android:scheme="https"/>
+                <data android:host="www.coursera.org" android:pathPattern="/sso/return/.*/.*" android:scheme="https"/>
+                <data android:host="en.coursera.org" android:pathPattern="/sso/return/.*/.*" android:scheme="https"/>
+                <data android:host="www.coursera.org" android:pathPattern="/programs/.*" android:scheme="https"/>
+                <data android:host="www.coursera.org" android:pathPattern="/groups/.*" android:scheme="https"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:host="app" android:scheme="coursera-mobile"/>
+            </intent-filter>
+        </activity>
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>
+        <meta-data android:name="com.google.android.gms.cast.framework.OPTIONS_PROVIDER_CLASS_NAME" android:value="org.coursera.android.chrome_cast.CastOptionsProvider"/>
+        <activity android:name="org.coursera.android.module.homepage_module.feature_module.onboarding.preference_collection.OnboardingActivity" android:theme="@style/CourseraNoActionBar"/>
+        <activity android:name="org.coursera.android.module.homepage_module.feature_module.onboarding.preference_collection.OnboardingWelcomeActivity" android:noHistory="true" android:theme="@style/CourseraNoActionBar"/>
+        <activity android:configChanges="orientation|screenSize" android:name="org.coursera.android.module.homepage_module.feature_module.onboarding.preference_collection.view.OnboardingLoadingActivity" android:theme="@style/LoadingTheme"/>
+        <activity android:launchMode="singleTask" android:name="org.coursera.android.module.homepage_module.feature_module.homepage_v2.HomepageV2Activity" android:screenOrientation="portrait" android:theme="@style/CourseraNoActionOrStatusBar" android:windowSoftInputMode="adjustNothing"/>
+        <activity android:name="org.coursera.android.module.homepage_module.feature_module.download_manager.view.OfflineDownloadedContentActivity" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:label="" android:name="org.coursera.android.module.catalog_v2_module.view.catalog_subdomain.CatalogSubDomainActivity" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:label="" android:name="org.coursera.android.module.catalog_v2_module.view.catalog_domain.CatalogDomainActivity" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:label="" android:name="org.coursera.android.module.catalog_v2_module.view.featured_list.CatalogFeaturedListActivity" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:label="" android:name="org.coursera.android.module.catalog_v2_module.view.degrees.DegreeListActivity" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:label="" android:name="org.coursera.android.module.catalog_v2_module.view.degrees.DegreeWebviewActivity" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:label="" android:name="org.coursera.android.module.catalog_v2_module.catalog_home.CatalogV3SeeAllActivity" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:label="" android:name="org.coursera.android.module.catalog_v2_module.catalog_home.CatalogV3TopicsActivity" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:name="org.coursera.android.module.course_content_v2_kotlin.view.ReferenceActivity" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:name="org.coursera.android.module.course_content_v2_kotlin.view.ReferenceListActivity" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:name="org.coursera.android.module.course_content_v2_kotlin.view.CourseNotificationsActivity" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:name="org.coursera.android.module.course_content_v2_kotlin.view.ItemRoutingActivity" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:configChanges="orientation|screenSize" android:label="" android:launchMode="singleTop" android:name="org.coursera.android.module.course_outline.flexmodule_v3.view.CourseOutlineV2Activity" android:parentActivityName="org.coursera.android.module.homepage_module.feature_module.homepage_v2.HomepageV2Activity" android:theme="@style/CourseraNoActionBarAndBlackStatusBar">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="org.coursera.android.module.homepage_module.feature_module.homepage_v2.HomepageV2Activity"/>
+        </activity>
+        <activity android:name="androidx.appcompat.app.ActionBarActivity" android:theme="@style/CourseraBlueActionBarTheme"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:name="org.coursera.android.module.course_outline.webview_content.CourseContentWebViewActivity" android:parentActivityName="org.coursera.android.module.course_outline.flexmodule_v3.view.CourseOutlineV2Activity" android:theme="@style/CourseraNoActionBarAndBlackStatusBar">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="org.coursera.android.module.course_outline.flexmodule_v3.view.CourseOutlineV2Activity"/>
+        </activity>
+        <activity android:name="org.coursera.android.module.course_outline.flexmodule_v3.view.InstructorListActivity" android:parentActivityName="org.coursera.android.module.course_outline.flexmodule_v3.view.CourseOutlineV2Activity" android:theme="@style/CourseraNoActionBarAndBlackStatusBar">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="org.coursera.android.module.course_outline.flexmodule_v3.view.CourseOutlineV2Activity"/>
+        </activity>
+        <activity android:name="org.coursera.android.module.course_outline.flexmodule_v3.view.InstructorProfileV2Activity" android:theme="@style/CourseraNoActionBarAndBlackStatusBar">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="org.coursera.android.module.course_outline.flexmodule_v3.view.CourseOutlineV2Activity"/>
+        </activity>
+        <activity android:name="org.coursera.android.module.course_outline.flexmodule_v3.view.PartnerV2Activity" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:name="org.coursera.android.module.course_outline.flexmodule_v3.view.LockedItemActivity" android:screenOrientation="portrait" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize" android:name="org.coursera.android.zapp.module.ZappActivity" android:parentActivityName="org.coursera.android.module.homepage_module.feature_module.homepage_v2.HomepageV2Activity" android:resizeableActivity="true" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize" android:launchMode="singleTop" android:name="org.coursera.android.module.course_video_player.feature_module.CourseVideoActivity" android:parentActivityName="org.coursera.android.module.course_outline.flexmodule_v3.view.CourseOutlineV2Activity" android:resizeableActivity="true" android:supportsPictureInPicture="true" android:theme="@style/CourseraNoActionBarAndBlackStatusBar">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="org.coursera.android.module.course_outline.flexmodule_v3.view.CourseOutlineV2Activity"/>
+        </activity>
+        <activity android:name="org.coursera.android.module.course_video_player.feature_module.ChromeCastActivityRouter" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <service android:label="@string/app_name" android:name="org.coursera.android.module.course_video_player.feature_module.BackgroundAudioService"/>
+        <activity android:label="@string/default_title" android:name="org.coursera.android.module.settings.settings_module.view.SettingsActivity" android:parentActivityName="org.coursera.android.module.homepage_module.feature_module.homepage_v2.HomepageV2Activity" android:theme="@style/CourseraNoActionBarAndBlackStatusBar">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="org.coursera.android.module.homepage_module.feature_module.homepage_v2.HomepageV2Activity"/>
+        </activity>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:name="org.coursera.android.module.settings.settings_module.view.ProfileVerificationActivity" android:parentActivityName="org.coursera.android.module.homepage_module.feature_module.homepage_v2.HomepageV2Activity" android:theme="@style/CourseraNoActionBarAndBlackStatusBar">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="org.coursera.android.module.homepage_module.feature_module.homepage_v2.HomepageV2Activity"/>
+        </activity>
+        <activity android:name="view.CalendarWebviewActivity" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:label="@string/app_name" android:name="com.facebook.LoginActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:label="Login" android:launchMode="singleTask" android:name="org.coursera.android.login.module.view.LoginV2Activity" android:theme="@style/CourseraNoActionBar" android:windowSoftInputMode="adjustResize"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="" android:name="org.coursera.android.module.quiz.feature_module.view.ExamStartActivity" android:screenOrientation="portrait" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="" android:launchMode="singleTask" android:name="org.coursera.android.module.quiz.feature_module.view.CourseQuizActivity" android:parentActivityName="org.coursera.android.module.course_outline.flexmodule_v3.view.CourseOutlineV2Activity" android:screenOrientation="portrait" android:theme="@style/CourseraNoActionBarAndBlackStatusBar">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="org.coursera.android.module.course_outline.flexmodule_v3.view.CourseOutlineV2Activity"/>
+        </activity>
+        <activity android:label="" android:name="org.coursera.android.module.quiz.feature_module.view.AssessmentReviewActivity" android:screenOrientation="portrait" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="" android:name="org.coursera.android.module.quiz.feature_module.view.QuizDetailedReviewActivity" android:screenOrientation="portrait" android:theme="@style/CourseraBlueActionBarTheme"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="" android:name="org.coursera.android.module.quiz.feature_module.view.CourseSupplementActivity" android:screenOrientation="portrait" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:name="android.coursera.org.live_events_module.AddZoomEventActivity" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:name="org.coursera.android.xdp_module.view.XDPCDPActivity" android:theme="@style/CourseraMaterialNoActionBarAndBlackStatusBar"/>
+        <activity android:name="org.coursera.android.xdp_module.view.XDPSDPActivity" android:theme="@style/CourseraMaterialNoActionBarAndBlackStatusBar"/>
+        <activity android:name="org.coursera.android.search_v2_module.SearchFilterActivity" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:label="@string/saving_for_offline" android:launchMode="singleTask" android:name="org.coursera.android.coredownloader.active_downloads_module.view.ActiveDownloadsActivity" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <receiver android:name="org.coursera.android.coredownloader.CoreDownloadCompleteReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.DOWNLOAD_COMPLETE"/>
+            </intent-filter>
+        </receiver>
+        <service android:name="org.coursera.android.coredownloader.flex_video_downloader.FlexVideoDownloaderNotificationManager"/>
+        <activity android:label="" android:name="org.coursera.android.module.enrollment_module.module.EnrollmentActivity" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:label="" android:name="org.coursera.android.module.enrollment_module.subscriptions.view.SubscriptionEnrollmentActivity" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:label="" android:name="org.coursera.android.module.enrollment_module.specializations.view.SpecializationPaymentActivity" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:name="view.ForumQuestionListActivity" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:label="@string/discussions" android:name="view.ForumQuestionThreadActivity" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:label="@string/sub_forum" android:name="view.SubForumsActivity" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:name="view.ForumPostThreadActivity" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:name="view.ForumPostReplyActivity" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:name="org.coursera.android.module.specialization_progress_module.view.SpecializationHomeActivity" android:theme="@style/CourseraNoActionOrStatusBar"/>
+        <activity android:label="@string/title_activity_payments" android:name="org.coursera.android.module.payments.feature_module.view.PaymentsVerifiedCertificateActivity" android:screenOrientation="portrait" android:theme="@style/CourseraBlueActionBarTheme"/>
+        <activity android:label="@string/purchase" android:name="org.coursera.android.module.payments.credit_card.view.CreditCardActivity" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:label="@string/payment_information" android:name="org.coursera.android.module.payments.payment_info.view.EditPaymentActivity" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:label="@string/edit_payment_method" android:name="org.coursera.android.module.payments.payment_info.view.EditCreditCardActivity" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:label="@string/purchase" android:name="org.coursera.android.module.payments.saved_card.view.SavedCardActivity" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:label="@string/my_subscriptions" android:name="org.coursera.android.module.payments.purchases.view.PurchasesActivity" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:name="org.coursera.android.module.payments.purchases.view.modals.PurchasesModalActivity" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:name="org.coursera.android.module.payments.emergent.view.EmergentPaymentMethodsActivity" android:theme="@style/CourseraBlueActionBarTheme"/>
+        <activity android:name="org.coursera.android.module.payments.emergent.view.EmergentInputFormActivity" android:screenOrientation="portrait" android:theme="@style/CourseraBlueActionBarTheme"/>
+        <activity android:name="org.coursera.android.module.peer_review_module.feature_module.view.PeerReviewMainActivity" android:parentActivityName="org.coursera.android.module.course_outline.flexmodule_v3.view.CourseOutlineV2Activity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="org.coursera.android.module.course_outline.flexmodule_v3.view.CourseOutlineV2Activity"/>
+        </activity>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:name="org.coursera.android.module.peer_review_module.feature_module.view.PeerReviewInstructionsActivity" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:name="org.coursera.android.module.peer_review_module.feature_module.view.PeerReviewAssignmentSubmissionActivity" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:name="org.coursera.android.module.peer_review_module.feature_module.view.PeerReviewViewSubmissionActivity" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:name="org.coursera.android.module.peer_review_module.feature_module.view.PeerReviewQueueActivity" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:name="org.coursera.android.module.programming_assignment.feature_module.view.InstructionsActivity" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:name="org.coursera.android.module.programs_module.view.EnterpriseHomeActivity" android:screenOrientation="portrait" android:theme="@style/CourseraNoActionBar" android:windowSoftInputMode="adjustResize"/>
+        <activity android:name="org.coursera.android.module.programs_module.view.GroupsInvitationActivity" android:screenOrientation="portrait" android:theme="@style/CourseraBlueActionBarTheme"/>
+        <activity android:name="org.coursera.android.module.programs_module.view.EnterpriseDomainActivity" android:screenOrientation="portrait" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:name="org.coursera.android.module.programs_module.view.EnterpriseSubdomainActivity" android:screenOrientation="portrait" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:name="org.coursera.android.module.programs_module.view.EnterpriseSearchActivity" android:screenOrientation="portrait"/>
+        <activity android:name="org.coursera.android.module.programs_module.view.EnterpriseCollectionsActivity" android:screenOrientation="portrait" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:name="org.coursera.android.module.programs_module.view.PeerRecommendationsActivity" android:screenOrientation="portrait"/>
+        <activity android:name="org.coursera.android.module.programs_module.view.EnterpriseCollectionsCoursesActivity" android:screenOrientation="portrait"/>
+        <activity android:name="org.coursera.android.module.programs_module.view.EnterpriseSearchFiltersActivity" android:screenOrientation="portrait" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:name="org.coursera.android.module.programs_module.view.EnterpriseSearchFiltersSeeAllActivity" android:screenOrientation="portrait" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:name="org.coursera.android.module.programs_module.view.EnterpriseSearchSubdomainsActivity" android:screenOrientation="portrait" android:theme="@style/CourseraNoActionBarAndBlackStatusBar"/>
+        <activity android:label="@string/get_certificate" android:name="org.coursera.android.module.verification_profile.feature_module.view.CertificatesLinkActivity" android:screenOrientation="portrait" android:theme="@style/CourseraNoActionBarAndBlackStatusBar" android:windowSoftInputMode="stateHidden"/>
+        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity"/>
+        <activity android:label="" android:launchMode="singleTask" android:name="org.coursera.core.base.DefaultWebViewActivity"/>
+        <activity android:clearTaskOnLaunch="true" android:launchMode="singleInstance" android:name="org.coursera.core.views.NetworkOverloadedActivity"/>
+        <service android:directBootAware="true" android:exported="false" android:name="com.google.firebase.components.ComponentDiscoveryService">
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.analytics.ktx.FirebaseAnalyticsKtxRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonKtxRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.crashlytics.CrashlyticsRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.iid.Registrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+        </service>
+        <service android:exported="false" android:name="com.zopim.android.sdk.widget.ChatWidgetService" android:stopWithTask="true"/>
+        <activity android:label="@string/chat_activity_title" android:name="com.zopim.android.sdk.prechat.ZopimChatActivity" android:theme="@style/ZopimChatTheme" android:windowSoftInputMode="adjustResize|stateUnchanged">
+            <intent-filter android:priority="-1000">
+                <action android:name="zopim.action.RESUME_CHAT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/rate_this_chat_leave_a_comment_title" android:name="com.zopim.android.sdk.chatlog.ZopimCommentActivity" android:theme="@style/ZopimChatTheme" android:windowSoftInputMode="adjustResize"/>
+        <receiver android:name="com.zendesk.sdk.power.BatteryStateBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BATTERY_LOW"/>
+                <action android:name="android.intent.action.BATTERY_OKAY"/>
+            </intent-filter>
+        </receiver>
+        <activity android:label="@string/contact_fragment_title" android:name="com.zendesk.sdk.feedback.ui.ContactZendeskActivity" android:windowSoftInputMode="adjustResize|stateVisible"/>
+        <activity android:label="@string/contact_fragment_title" android:name="com.zendesk.sdk.requests.ViewRequestActivity" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:label="@string/request_list_activity_title" android:name="com.zendesk.sdk.requests.RequestActivity"/>
+        <activity android:configChanges="orientation|screenSize" android:name="com.zendesk.sdk.support.ViewArticleActivity"/>
+        <activity android:label="@string/support_activity_title" android:name="com.zendesk.sdk.support.SupportActivity" android:windowSoftInputMode="adjustResize"/>
+        <receiver android:exported="false" android:name="com.zendesk.sdk.deeplinking.ZendeskDeepLinkingBroadcastReceiver">
+            <intent-filter>
+                <action android:name="com.zendesk.sdk.deeplinking"/>
+            </intent-filter>
+        </receiver>
+        <service android:directBootAware="true" android:exported="false" android:name="com.google.firebase.messaging.FirebaseMessagingService">
+            <intent-filter android:priority="-500">
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <service android:exported="false" android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery">
+            <meta-data android:name="backend:com.google.android.datatransport.cct.CctBackendFactory" android:value="cct"/>
+        </service>
+        <service android:exported="false" android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <receiver android:exported="false" android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"/>
+        <service android:exported="false" android:name="com.zopim.android.sdk.api.ChatService"/>
+        <service android:name="com.braintreepayments.api.internal.AnalyticsIntentService"/>
+        <activity android:name="com.braintreepayments.api.ThreeDSecureActivity"/>
+        <activity android:name="com.facebook.CustomTabMainActivity"/>
+        <activity android:name="com.facebook.CustomTabActivity"/>
+        <receiver android:exported="false" android:name="com.google.android.gms.cast.framework.media.MediaIntentReceiver"/>
+        <service android:exported="false" android:name="com.google.android.gms.cast.framework.media.MediaNotificationService"/>
+        <service android:exported="false" android:name="com.google.android.gms.cast.framework.ReconnectionService"/>
+        <provider android:authorities="org.coursera.android.belvedere.attachments" android:exported="false" android:grantUriPermissions="true" android:name="com.zendesk.belvedere.BelvedereFileProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/belvedere_attachment_storage"/>
+        </provider>
+        <service android:directBootAware="false" android:exported="@bool/enable_gcm_scheduler_default" android:name="androidx.work.impl.background.gcm.WorkManagerGcmService" android:permission="com.google.android.gms.permission.BIND_NETWORK_TASK_SERVICE">
+            <intent-filter>
+                <action android:name="com.google.android.gms.gcm.ACTION_TASK_READY"/>
+            </intent-filter>
+        </service>
+        <provider android:authorities="org.coursera.android.workmanager-init" android:directBootAware="false" android:exported="false" android:multiprocess="true" android:name="androidx.work.impl.WorkManagerInitializer"/>
+        <service android:directBootAware="false" android:enabled="@bool/enable_system_alarm_service_default" android:exported="false" android:name="androidx.work.impl.background.systemalarm.SystemAlarmService"/>
+        <service android:directBootAware="false" android:enabled="@bool/enable_system_job_service_default" android:exported="true" android:name="androidx.work.impl.background.systemjob.SystemJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:directBootAware="false" android:enabled="@bool/enable_system_foreground_service_default" android:exported="false" android:name="androidx.work.impl.foreground.SystemForegroundService"/>
+        <receiver android:directBootAware="false" android:enabled="true" android:exported="false" android:name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver"/>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy">
+            <intent-filter>
+                <action android:name="android.intent.action.BATTERY_OKAY"/>
+                <action android:name="android.intent.action.BATTERY_LOW"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy">
+            <intent-filter>
+                <action android:name="android.intent.action.DEVICE_STORAGE_LOW"/>
+                <action android:name="android.intent.action.DEVICE_STORAGE_OK"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.TIME_SET"/>
+                <action android:name="android.intent.action.TIMEZONE_CHANGED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="@bool/enable_system_alarm_service_default" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver">
+            <intent-filter>
+                <action android:name="androidx.work.impl.background.systemalarm.UpdateProxies"/>
+            </intent-filter>
+        </receiver>
+        <service android:exported="false" android:name="androidx.room.MultiInstanceInvalidationService"/>
+        <provider android:authorities="org.coursera.android.lifecycle-process" android:exported="false" android:multiprocess="true" android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"/>
+        <activity android:excludeFromRecents="true" android:exported="false" android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <service android:exported="true" android:name="com.google.android.gms.auth.api.signin.RevocationBoundService" android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"/>
+        <receiver android:exported="true" android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+            </intent-filter>
+        </receiver>
+        <activity android:exported="false" android:name="com.google.android.gms.common.api.GoogleApiActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <provider android:authorities="org.coursera.android.firebaseinitprovider" android:exported="false" android:initOrder="100" android:name="com.google.firebase.provider.FirebaseInitProvider"/>
+        <receiver android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementReceiver"/>
+        <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementService"/>
+        <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <provider android:authorities="org.coursera.android.FacebookInitProvider" android:exported="false" android:name="com.facebook.internal.FacebookInitProvider"/>
+        <receiver android:exported="false" android:name="com.facebook.CurrentAccessTokenExpirationBroadcastReceiver">
+            <intent-filter>
+                <action android:name="com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED"/>
+            </intent-filter>
+        </receiver>
+        <activity android:enabled="false" android:exported="false" android:launchMode="singleInstance" android:name="com.google.android.play.core.missingsplits.PlayCoreMissingSplitsActivity" android:process=":playcore_missing_splits_activity" android:stateNotNeeded="true"/>
+        <activity android:enabled="false" android:exported="false" android:name="com.google.android.play.core.common.PlayCoreDialogWrapperActivity" android:stateNotNeeded="true" android:theme="@style/Theme.PlayCore.Transparent"/>
+        <service android:enabled="false" android:exported="true" android:name="com.google.android.play.core.assetpacks.AssetPackExtractionService"/>
+        <activity android:name="com.braintreepayments.api.GooglePaymentActivity" android:theme="@style/bt_transparent_activity"/>
+    </application>
+</manifest>

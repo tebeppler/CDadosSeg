@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package="com.instagram.layout" platformBuildVersionCode="23" platformBuildVersionName="6.0-2166767">
+    <compatible-screens>
+        <screen android:screenDensity="560" android:screenSize="small"/>
+        <screen android:screenDensity="560" android:screenSize="normal"/>
+        <screen android:screenDensity="560" android:screenSize="large"/>
+        <screen android:screenDensity="560" android:screenSize="xlarge"/>
+        <screen android:screenDensity="420" android:screenSize="small"/>
+        <screen android:screenDensity="420" android:screenSize="normal"/>
+        <screen android:screenDensity="420" android:screenSize="large"/>
+        <screen android:screenDensity="420" android:screenSize="xlarge"/>
+        <screen android:screenDensity="xxxhdpi" android:screenSize="small"/>
+        <screen android:screenDensity="xxxhdpi" android:screenSize="normal"/>
+        <screen android:screenDensity="xxxhdpi" android:screenSize="large"/>
+        <screen android:screenDensity="xxxhdpi" android:screenSize="xlarge"/>
+        <screen android:screenDensity="400" android:screenSize="small"/>
+        <screen android:screenDensity="400" android:screenSize="normal"/>
+        <screen android:screenDensity="400" android:screenSize="large"/>
+        <screen android:screenDensity="400" android:screenSize="xlarge"/>
+        <screen android:screenDensity="280" android:screenSize="small"/>
+        <screen android:screenDensity="280" android:screenSize="normal"/>
+        <screen android:screenDensity="280" android:screenSize="large"/>
+        <screen android:screenDensity="280" android:screenSize="xlarge"/>
+        <screen android:screenDensity="360" android:screenSize="small"/>
+        <screen android:screenDensity="360" android:screenSize="normal"/>
+        <screen android:screenDensity="360" android:screenSize="large"/>
+        <screen android:screenDensity="360" android:screenSize="xlarge"/>
+        <screen android:screenDensity="xxhdpi" android:screenSize="small"/>
+        <screen android:screenDensity="xxhdpi" android:screenSize="normal"/>
+        <screen android:screenDensity="xxhdpi" android:screenSize="large"/>
+        <screen android:screenDensity="xxhdpi" android:screenSize="xlarge"/>
+    </compatible-screens>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-feature android:name="android.hardware.camera"/>
+    <uses-feature android:name="android.hardware.camera.autofocus"/>
+    <application android:allowBackup="false" android:debuggable="false" android:icon="@drawable/app_icon" android:label="@string/app_name" android:largeHeap="true" android:name="com.instagram.layout.LayoutApplication" android:theme="@style/LayoutsTheme">
+        <meta-data android:name="com.facebook.build_rule" android:value="layout_xxhdpi_armv7_release_fbsign"/>
+        <meta-data android:name="com.facebook.package_type" android:value="release"/>
+        <meta-data android:name="com.facebook.build_time" android:value="1490817577000L"/>
+        <meta-data android:name="com.facebook.versioncontrol.branch" android:value="master"/>
+        <meta-data android:name="com.facebook.versioncontrol.revision" android:value="MASTER"/>
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTop" android:name="com.instagram.layout.LayoutActivity" android:screenOrientation="portrait" android:theme="@style/LayoutsTheme" android:windowSoftInputMode="stateHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="image/*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <receiver android:exported="true" android:name="com.instagram.layout.InstallReferrerReceiver">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:exported="true" android:name="com.instagram.common.analytics.phoneid.InstagramPhoneIdRequestReceiver">
+            <intent-filter>
+                <action android:name="com.facebook.GET_PHONE_ID"/>
+            </intent-filter>
+        </receiver>
+        <meta-data android:name="android.max_aspect" android:value="2.1"/>
+    </application>
+</manifest>
